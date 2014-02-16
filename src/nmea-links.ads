@@ -25,14 +25,15 @@ package NMEA.Links is
    procedure Dump  (Self : in Nmea_Stream);
    procedure Dump  (Self : in Nmea_Frame);
 
+   NMEA_Checksum_Error : exception;
 
 private
    procedure Check_Checksum (Self : Nmea_Frame);
+   function Check_Checksum (Self : Nmea_Frame) return Boolean;
    procedure Generate_Checksum (Self : in out Nmea_Frame);
    use type Ada.Streams.Stream_Element_Offset;
 
-   --  MAX_LENGHT : constant := 128;
-   MAX_LENGHT : constant := 99;
+   MAX_LENGHT : constant := 128;
    type Nmea_Stream (Parent : not null access Nmea_Frame) is
      new Ada.Streams.Root_Stream_Type with record
       In_Cursor : Ada.Streams.Stream_Element_Offset;
@@ -50,10 +51,7 @@ private
 
    type Nmea_Frame is tagged limited record
       Time     : Ada.Calendar.Time;
-      Data     : Ada.Streams.Stream_Element_Array
-        (1 .. 1 + MAX_LENGHT - 1);
---          (Ada.Streams.Stream_Element_Offset'First ..
---             Ada.Streams.Stream_Element_Offset'First + MAX_LENGHT - 1);
+      Data     : Ada.Streams.Stream_Element_Array (1 .. 1 + MAX_LENGHT - 1);
       Cursor   : Ada.Streams.Stream_Element_Offset;
       N_Stream : aliased Nmea_Stream (Nmea_Frame'Access);
    end record;

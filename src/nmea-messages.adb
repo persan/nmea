@@ -5,10 +5,15 @@ with Ada.Strings.Hash;
 with Ada.Tags;
 with System;
 with NMEA.Links;
-with Ada.Exceptions; use Ada.Exceptions;
+with GNAT.Calendar.Time_IO;
+with Ada.Strings.Fixed;
+with Ada.Strings.Maps; use Ada.Strings.Maps;
+with Ada.Text_IO; use Ada.Text_IO;
 package body NMEA.Messages is
    use Ada.Tags;
+   use  Ada.Strings.Fixed;
    function "<" (L, R : Ada.Tags.Tag) return Boolean;
+   Witespace_Set           : constant Character_Set := To_Set (' ' & ASCII.HT & ASCII.VT & ASCII.LF & ASCII.CR);
 
    package Tag_Maps is new Ada.Containers.Indefinite_Hashed_Maps (String, Ada.Tags.Tag, Ada.Strings.Hash, "=");
    package Name_Maps is new Ada.Containers.Indefinite_Ordered_Maps (Ada.Tags.Tag, String, "<", "=");
@@ -42,7 +47,7 @@ package body NMEA.Messages is
       Cursor : Natural := Name'First;
       Dummy  : Character;
    begin
-      Character'Read (Stream, Name (Cursor));
+      Character'Read (Stream, Name (Cursor)); -- skip leading $
       for I in 1 .. 5 loop
          Character'Read (Stream, Name (Cursor));
          Cursor := Cursor + 1;
@@ -50,13 +55,10 @@ package body NMEA.Messages is
       if not Tag_Map.Contains (Name) then
          raise Constraint_Error with Name  & " Not registerd!";
       end if;
-      Character'Read (Stream, Dummy);
+      Character'Read (Stream, Dummy); -- skip first ,
       return Result : Message'Class := Construct_Message (Tag_Map.Element (Name), Stream) do
          null;
       end return;
-   exception when others =>
-         Try_Dump (Stream);
-         raise;
    end Input_Message;
 
    --------------------
@@ -86,95 +88,93 @@ package body NMEA.Messages is
 
 
 
-   function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return Long_Float is
-   begin
-      return Long_Float'Value (Read (Stream));
-   end;
-   function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return Integer is
-   begin
-      return Integer'Value (Read (Stream));
-   end;
 
 
-   procedure Read_UTC_Time_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : out UTC_Time_Type) is
-      HH : String (1 .. 2);
-      MM : String (1 .. 2);
-      SS : String (1 .. 2);
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out UTC_Time_Type) is
+      Buffer : constant String := Read (Stream);
    begin
-      String'Read (Stream, HH);
-      if HH (1) = ',' then
-         HH (1) := HH (2);
-         Character'Read (Stream, HH (2));
+      if Buffer'Length = 6 then
+         Data.Data := Integer'Value (Buffer (Buffer'First + 0 .. Buffer'First + 1)) * (24.0) * (60.0) +
+           Integer'Value (Buffer (Buffer'First + 2 .. Buffer'First + 3)) * (60.0) +
+           Integer'Value (Buffer (Buffer'First + 4 .. Buffer'First + 5)) * (1.0);
+         Data.Is_Valid := True;
       end if;
-      String'Read (Stream, MM);
-      String'Read (Stream, SS);
-      Data.Data := Integer'Value (HH) * (24.0) * (60.0) +
-        Integer'Value (MM) * (60.0) +
-        Integer'Value (SS) * (1.0);
-      Data.Is_Valid := True;
    end;
 
-   procedure Write_UTC_Time_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                  Data   : in UTC_Time_Type) is
-     HH : Integer;
-     MM : Integer;
-     SS : Integer;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in UTC_Time_Type) is
+      use GNAT.Calendar.Time_IO;
+      T : Ada.Calendar.Time;
    begin
+      T := Ada.Calendar.Time_Of (2000, 01, 01, Data.Data);
       NMEA_Field'Write (Stream, NMEA_Field (Data));
-      String'Write (Stream, "hhmmss");
+      String'Write (Stream, Image (T, "%H%M%S"));
    end;
 
 
-   procedure Read_NMEA_Status (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                Data   : out NMEA_Status) is
       Buffer : constant String := Read (Stream);
    begin
-      case Buffer (1) is
+      if Buffer'Length > 0 then
+         case Buffer (1) is
          when 'A' => Data.Data := OK;
          when 'V' => Data.Data := Invalid;
          when others =>
             raise Constraint_Error with "NMEA Status out of bounds '" & Buffer &  "'.";
-      end case;
-      Data.Is_Valid := True;
+         end case;
+         Data.Is_Valid := True;
+      end if;
    end;
 
-   procedure Write_NMEA_Status (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                 Data   : in NMEA_Status) is
    begin
-       NMEA_Field'Write (Stream, NMEA_Field (Data));
-     case Data.Data is
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      case Data.Data is
          when OK =>      String'Write (Stream, "A");
          when Invalid => String'Write (Stream, "V");
       end case;
    end;
 
 
-   procedure Read_NMEA_Left_Right (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                               Data   : out NMEA_Left_Right) is
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                                   Data   : out NMEA_Left_Right) is
       Buffer : constant String := Read (Stream);
    begin
-      case Buffer (1) is
+      if Buffer'Length > 0 then
+         case Buffer (1) is
          when 'L' => Data.Data := Left;
          when 'R' => Data.Data := Right;
          when others =>
             raise Constraint_Error with "NMEA Left/Right out of bounds '" & Buffer &  "'.";
-      end case;
-      Data.Is_Valid := True;
+         end case;
+         Data.Is_Valid := True;
+      end if;
    end;
 
-   procedure Write_NMEA_Left_Right (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                Data   : in NMEA_Left_Right) is
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                                    Data   : in NMEA_Left_Right) is
    begin
-       NMEA_Field'Write (Stream, NMEA_Field (Data));
-     case Data.Data is
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      if Data.Is_Valid then
+         case Data.Data is
          when Left  => String'Write (Stream, "L");
          when Right => String'Write (Stream, "R");
-      end case;
+         end case;
+      end if;
    end;
 
 
 
+
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class)  is
+      Dummy : constant String := Read (Stream);
+      pragma Unreferenced (Dummy);
+   begin
+      null;
+   end;
 
    function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return String is
       Ret    : String (1 .. 64);
@@ -182,46 +182,45 @@ package body NMEA.Messages is
    begin
       loop
          Character'Read (Stream, Ret (Cursor));
-         exit when Ret (Cursor) not in ',' | '*';
-      end loop;
-      Cursor := Cursor + 1;
-      loop
-         Character'Read (Stream, Ret (Cursor));
+         Put (Ret (Cursor));
          exit when Ret (Cursor) in  ',' | '*';
          Cursor := Cursor + 1;
       end loop;
+      Put_Line ("--> '" & Ret (1 .. Cursor - 1) & "'");
       return Ret (1 .. Cursor - 1);
    end;
 
-   procedure Read_NMEA_Long_Float (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                    Data   : out NMEA_Long_Float) is
       Buffer : constant String := Read (Stream);
    begin
-      Data.Data :=  Long_Float'Value (Buffer);
+      if Buffer'Length /= 0 then
+         Data.Data :=  Long_Float'Value (Buffer);
+      else
+         Data.Is_Valid := False;
+      end if;
    exception
       when others =>
          pragma Debug (Try_Dump (Stream));
          raise Constraint_Error with "No Float value '" & Buffer &  "'.";
    end;
 
-   procedure Write_NMEA_Long_Float (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                     Data   : in NMEA_Long_Float) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
-      null;
    end;
 
-   procedure Read_NMEA_Integer (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                 Data   : out NMEA_Integer) is
       Buffer : constant String := Read (Stream);
    begin
-      Data.Data :=  Integer'Value (Buffer);
-   exception
-      when E : others =>
-         pragma Debug (Try_Dump (Stream));
-         Raise_Exception (Exception_Identity (E), "No Integer '" & Buffer & "'");
+      if Buffer'Length > 0 then
+         Data.Data :=  Integer'Value (Buffer);
+         Data.Is_Valid := True;
+      end if;
    end;
-   procedure Write_NMEA_Integer (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                  Data   : in NMEA_Integer) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
@@ -239,99 +238,147 @@ package body NMEA.Messages is
       end return;
    end;
 
-   procedure Read_Latitude_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : out Latitude_Type) is
-      Val        : constant Long_Float := Read (Stream);
-      Hemisphere : constant String := Read (Stream);
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out Latitude_Type) is
    begin
-      case Hemisphere (Hemisphere'First) is
-         when 'N' => Data.Data := Val * 1.0;
-         when 'S' => Data.Data := Val * (-1.0);
-         when others =>
-            raise Constraint_Error with "Data out of bounds'" & Hemisphere & "'";
-      end case;
-
+      NMEA_Long_Float'Read (Stream, NMEA_Long_Float (Data));
+      declare
+         Hemisphere : constant String := Read (Stream);
+      begin
+         if Hemisphere'Length > 0 then
+            if Hemisphere (Hemisphere'First) = 'N' then
+               Data.Data := Data.Data * 1.0;
+               Data.Is_Valid := True;
+            elsif Hemisphere (Hemisphere'First) = 'S' then
+               Data.Data := Data.Data * (-1.0);
+               Data.Is_Valid := True;
+            end if;
+         end if;
+      end;
    end;
 
-   procedure Write_Latitude_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                  Data   : in Latitude_Type) is
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in Latitude_Type) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
-      null;
    end;
 
 
-   procedure Read_Longitude_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                   Data   : out Longitude_Type) is
       Val        : constant String := Read (Stream);
       Hemisphere : constant String := Read (Stream);
    begin
-      Data.Data := Deg_To_Float (Val);
-      case Hemisphere (Hemisphere'First) is
+      if Val'Length > 0  and then Hemisphere'Length > 0 then
+         Data.Data := Deg_To_Float (Val);
+         case Hemisphere (Hemisphere'First) is
          when 'E' => Data.Data := Data.Data * 1.0;
          when 'W' => Data.Data := Data.Data * (-1.0);
          when others =>
             raise Constraint_Error with "Data out of bounds'" & Hemisphere & "'";
-      end case;
-
+         end case;
+         Data.Is_Valid := True;
+      end if;
    end;
 
-   procedure Write_Longitude_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                    Data   : in Longitude_Type) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
-      null;
    end;
 
 
 
-   procedure Read_NMEA_Seconds (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                 Data   : out NMEA_Seconds) is
+      Val : constant String := Read (Stream);
    begin
-      Data.Data := Duration (Long_Float'(Read (Stream)));
+      if Val'Length > 0 then
+         Data.Data := Duration'Value (Val);
+         Data.Is_Valid := True;
+      else
+         Data.Is_Valid := False;
+      end if;
    end;
 
-   procedure Write_NMEA_Seconds (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                  Data   : in NMEA_Seconds) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
-      null;
+      if Data.Is_Valid then
+         String'Write (Stream, Trim (Data.Data'Img, Witespace_Set, Witespace_Set));
+      end if;
    end;
 
 
-   procedure Read_UTC_Date_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                  Data   : out UTC_Date_Type) is
-      Buffer : String (1 .. 6);
+      Buffer : constant String := Read (Stream);
    begin
-      String'Read (Stream, Buffer);
-      Data.Data := Ada.Calendar.Time_Of (Integer'Value (Buffer (1 .. 2)) + 1900,
-                                         Integer'Value (Buffer (3 .. 4)),
-                                         Integer'Value (Buffer (5 .. 6)));
-      Data.Is_Valid := True;
-   exception
-      when E : others =>
-         pragma Debug (Try_Dump (Stream));
-         Raise_Exception (Exception_Identity (E), "No Date '" & Buffer & "'");
-
+      if Buffer'Length = 6 then
+         Data.Data := Ada.Calendar.Time_Of (Integer'Value (Buffer (1 .. 2)) + 1900,
+                                            Integer'Value (Buffer (3 .. 4)),
+                                            Integer'Value (Buffer (5 .. 6)));
+         Data.Is_Valid := True;
+      end if;
    end;
 
-   procedure Write_UTC_Date_Type (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                   Data   : in UTC_Date_Type) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
-      null;
+      if Data.Is_Valid then
+         String'Write (Stream, GNAT.Calendar.Time_IO.Image (Data.Data, "%y%m%d"));
+      end if;
    end;
-   procedure Read_NMEA_Field (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                              Data   : out NMEA_Field) is
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Field) is
       pragma Unreferenced (Stream);
    begin
       Data.Is_Valid := True;
    end;
 
-   procedure Write_NMEA_Field (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                               Data   : in NMEA_Field)  is
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Field)  is
+      pragma Unreferenced (Data);
    begin
       Character'Output (Stream, ',');
+   end;
+
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                              Data   : out Nmea_Hight) is
+   begin
+      NMEA_Long_Float'Read (Stream, NMEA_Long_Float (Data));
+      Read (Stream);
+   end;
+
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                               Data   : in Nmea_Hight) is
+   begin
+      if Data.Is_Valid then
+         NMEA_Long_Float'Write (Stream, NMEA_Long_Float (Data));
+         String'Write (Stream, ",M");
+      else
+         String'Write (Stream, ",,");
+      end if;
+   end;
+   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                              Data   : out NMEA_String) is
+      Buffer : constant String := Read (Stream);
+   begin
+      if Buffer'Length > 0 then
+         Ada.Strings.Fixed.Move (Buffer, Data.Data);
+         Data.Length := Buffer'Length;
+      end if;
+   end;
+
+   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                               Data   : in NMEA_String) is
+   begin
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      if Data.Is_Valid then
+         String'Write (Stream, Data.Data (Data.Data'First .. Data.Length));
+      end if;
    end;
 
 end NMEA.Messages;

@@ -31,6 +31,7 @@ package body NMEA.Links is
       Stream_Element'Read (Stream, Data.Data (Data.Cursor + 2));
       Data.Cursor := Data.Cursor + 3;
       Data.N_Stream.Length := Data.Cursor - Data.Data'First;
+      Data.N_Stream.In_Cursor := Data.Data'First;
    end Read;
 
    -----------
@@ -67,8 +68,16 @@ package body NMEA.Links is
 
    procedure Check_Checksum (Self : Nmea_Frame) is
    begin
-      null;
+      if not Self.Check_Checksum then
+         raise NMEA_Checksum_Error;
+      end if;
    end;
+   function Check_Checksum (Self : Nmea_Frame) return Boolean is
+      pragma Unreferenced (Self);
+   begin
+      return True;
+   end;
+
 
 
    overriding procedure Read

@@ -1,0 +1,16 @@
+with "nmea.gpr";
+project NMEA.Tests is
+
+   for Source_Dirs use ("tests");
+   for Object_Dir use ".obj/" & Project'name ;
+   for Exec_Dir use "bin";
+
+   for Main use ("nmea-main.adb");
+
+   package Compiler renames NMEA.Compiler;
+
+   package Binder is
+      for Default_Switches ("ada") use ("-E");
+   end Binder;
+
+end NMEA.Tests;

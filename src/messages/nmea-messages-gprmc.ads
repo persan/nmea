@@ -7,7 +7,7 @@ package NMEA.Messages.GPRMC is
       Long                        : Longitude_Type;
       Speed_Over_Ground           : Knots_Type;
       True_Course_Made_Good       : Heading_Type;
-      Date                        : UTC_Date_Type;
+      Date                        : UTC_Time_Type;
       Magnetic_Variation          : Magnetic_Variation_Type;
    end record;
 

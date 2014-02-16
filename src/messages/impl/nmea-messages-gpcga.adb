@@ -16,11 +16,7 @@ package body NMEA.Messages.GPCGA is
       end return;
    end Constructor;
 
-   overriding function Image (This : GPCGA_Message) return String is
-      pragma Unreferenced (This);
-   begin
-      return "N/A";
-   end;
+   overriding function Image (This : GPCGA_Message) return String is separate;
 
 begin
    Register ("GPCGA", GPCGA_Message'Tag);
