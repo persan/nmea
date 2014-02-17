@@ -35,15 +35,14 @@ begin
    begin
       while not End_Of_File (In_File) loop
          NMEA.Links.Nmea_Frame'Read (Text_Streams.Stream (In_File), Buffer);
-         Put_Line ("");
          Put_Line ("------------------------------------------------------------------------------------------------");
          Put_Line (Buffer.Image);
          declare
             Msg : NMEA.Messages.Message'Class := NMEA.Messages.Message'Class'Input (Buffer.Stream);
          begin
+            Put ("              ");
             NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Ada.Text_IO.Standard_Output), Msg);
-            Put_Line (Out_File, Msg.Image);
-            Put_Line ("------------------------------------------------------------------------------------------------");
+            NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Out_File), Msg);
          end;
       end loop;
    end;

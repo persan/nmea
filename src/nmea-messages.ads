@@ -3,6 +3,8 @@ with Ada.Streams;
 with Ada.Calendar;
 
 package NMEA.Messages is
+
+   --  This package provides a root for NMEA messages
    type Message is interface;
 
    function Input_Message
@@ -22,6 +24,7 @@ package NMEA.Messages is
    --  "placeholder type"
    --  Abstract constructor to be overriden by non-abstract
    --  derived types.  It is needed by Generic_Dispatching_Constructor
+
    function Constructor
      (Name : not null access Ada.Streams.Root_Stream_Type'Class)
       return Message
@@ -35,6 +38,7 @@ package NMEA.Messages is
    end record with
      Read => Read,
      Write => Write;
+
 
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                    Data   : out NMEA_Field);
@@ -63,12 +67,15 @@ package NMEA.Messages is
      Read => Read,
      Write => Write;
 
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                   Data   : out NMEA_Long_Float);
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Long_Float);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                    Data   : in NMEA_Long_Float);
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Long_Float);
 
+   function Image (Item : NMEA_Long_Float; Decimals : Natural := 2) return String;
 
    type Nmea_Hight is new NMEA_Long_Float with null record with
      Read => Read,
@@ -89,10 +96,10 @@ package NMEA.Messages is
 
 
    overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                Data   : out NMEA_Integer);
+                              Data   : out NMEA_Integer);
 
    overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : in NMEA_Integer);
+                               Data   : in NMEA_Integer);
 
    type NMEA_String (Max_Length : Natural) is new NMEA_Field with record
       Length : Natural := 0;
@@ -101,20 +108,20 @@ package NMEA.Messages is
      Read => Read,
      Write => Write;
    overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                Data   : out NMEA_String);
+                              Data   : out NMEA_String);
 
    overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : in NMEA_String);
+                               Data   : in NMEA_String);
 
 
    type Latitude_Type is new NMEA_Long_Float with null record with
      Read => Read,
      Write => Write;
    overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : out Latitude_Type);
+                              Data   : out Latitude_Type);
 
    overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                  Data   : in Latitude_Type);
+                               Data   : in Latitude_Type);
 
 
 
@@ -123,11 +130,13 @@ package NMEA.Messages is
      Write => Write;
 
 
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                  Data   : out Longitude_Type);
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out Longitude_Type);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                   Data   : in Longitude_Type);
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in Longitude_Type);
 
    type Fix_Quality_Type is new NMEA_Long_Float  with null record;
 
@@ -149,10 +158,10 @@ package NMEA.Messages is
 
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                Data   : out NMEA_Seconds);
+                   Data   : out NMEA_Seconds);
    overriding
    procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : in NMEA_Seconds);
+                    Data   : in NMEA_Seconds);
 
 
    type DGPS_Station_ID is new NMEA_Integer with null record;
@@ -163,11 +172,13 @@ package NMEA.Messages is
    end record with
      Read => Read,
      Write => Write;
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                               Data   : out NMEA_Status);
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Status);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                Data   : in NMEA_Status);
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Status);
 
 
    type NMEA_Left_Right_Type is (Left, Right);
@@ -176,11 +187,13 @@ package NMEA.Messages is
    end record with
      Read => Read,
      Write => Write;
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                   Data   : out NMEA_Left_Right);
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Left_Right);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                    Data   : in NMEA_Left_Right);
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Left_Right);
 
 
    type UTC_Date_Type is new NMEA_Field  with record
@@ -189,20 +202,23 @@ package NMEA.Messages is
      Read => Read,
      Write => Write;
 
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                 Data   : out UTC_Date_Type);
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out UTC_Date_Type);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                                  Data   : in UTC_Date_Type);
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in UTC_Date_Type);
 
    type Nautical_Mile_Type is new NMEA_Long_Float with null record;
    type Knots_Type is new NMEA_Long_Float with null record;
    type Heading_Type is new NMEA_Long_Float with null record;
    type Magnetic_Variation_Type is new Longitude_Type with null record;
 
-   function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return String;
 
 private
+
+   function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return String;
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class);
    procedure Try_Dump (Stream : not null access Ada.Streams.Root_Stream_Type'Class);
    function Construct_Message is
@@ -211,4 +227,7 @@ private
         Parameters  => Ada.Streams.Root_Stream_Type'Class,
         Constructor => Constructor);
    procedure Register (Name : String; Tag : Ada.Tags.Tag);
+   function Deg_To_Float (Value : String) return Long_Float;
+
+   function Image (Item : Long_Float; Decimals : Natural := 2) return String;
 end NMEA.Messages;

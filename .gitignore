@@ -2,3 +2,6 @@ lib
 .obj
 bin/*
 *.db
+gmon.out
+gprof
+NMEA.data.out

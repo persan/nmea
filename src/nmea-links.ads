@@ -2,19 +2,23 @@ with Ada.Streams;
 with Ada.Calendar;
 package NMEA.Links is
 
-   type Nmea_Frame is tagged limited private;
-   type Nmea_Stream (Parent : not null access Nmea_Frame) is
-     new Ada.Streams.Root_Stream_Type with private;
+   --  This package provides a framwork to read NMEA messages from any stream
+   --  into a buffer that could provides a Stream to read messages from.
 
+   type Nmea_Frame is tagged limited private;
    procedure Read
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
       Data   : out Nmea_Frame);
-   for Nmea_Frame'Read use Read;
 
    procedure Write
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
       Data   : in Nmea_Frame);
+   for Nmea_Frame'Read use Read;
    for Nmea_Frame'Write use Write;
+
+   type Nmea_Stream (Parent : not null access Nmea_Frame) is
+     new Ada.Streams.Root_Stream_Type with private;
+
 
    function Stream
      (Data : in Nmea_Frame)
