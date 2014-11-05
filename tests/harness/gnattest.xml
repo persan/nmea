@@ -1,0 +1,496 @@
+<tests_mapping mode="monolith">
+   <unit source_file="nmea-messages-cpgga.ads">
+      <test_unit target_file="nmea-messages-cpgga-cpgga_message_test_data-cpgga_message_tests.ads">
+         <setup file="nmea-messages-cpgga-cpgga_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-cpgga-cpgga_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="16" column="4">
+            <test file="nmea-messages-cpgga-cpgga_message_test_data-cpgga_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="19" column="4">
+            <test file="nmea-messages-cpgga-cpgga_message_test_data-cpgga_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gpbod.ads">
+      <test_unit target_file="nmea-messages-gpbod-gpbod_message_test_data-gpbod_message_tests.ads">
+         <setup file="nmea-messages-gpbod-gpbod_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gpbod-gpbod_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-gpbod-gpbod_message_test_data-gpbod_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-gpbod-gpbod_message_test_data-gpbod_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gpcga.ads">
+      <test_unit target_file="nmea-messages-gpcga-gpcga_message_test_data-gpcga_message_tests.ads">
+         <setup file="nmea-messages-gpcga-gpcga_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gpcga-gpcga_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="16" column="4">
+            <test file="nmea-messages-gpcga-gpcga_message_test_data-gpcga_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="19" column="4">
+            <test file="nmea-messages-gpcga-gpcga_message_test_data-gpcga_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gpgga.ads">
+      <test_unit target_file="nmea-messages-gpgga-gpgga_message_test_data-gpgga_message_tests.ads">
+         <setup file="nmea-messages-gpgga-gpgga_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gpgga-gpgga_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-gpgga-gpgga_message_test_data-gpgga_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-gpgga-gpgga_message_test_data-gpgga_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gpgll.ads">
+      <test_unit target_file="nmea-messages-gpgll-gpgll_message_test_data-gpgll_message_tests.ads">
+         <setup file="nmea-messages-gpgll-gpgll_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gpgll-gpgll_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-gpgll-gpgll_message_test_data-gpgll_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-gpgll-gpgll_message_test_data-gpgll_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gpgsa.ads">
+      <test_unit target_file="nmea-messages-gpgsa-gpgsa_message_test_data-gpgsa_message_tests.ads">
+         <setup file="nmea-messages-gpgsa-gpgsa_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gpgsa-gpgsa_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-gpgsa-gpgsa_message_test_data-gpgsa_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-gpgsa-gpgsa_message_test_data-gpgsa_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gpgsv.ads">
+      <test_unit target_file="nmea-messages-gpgsv-gpgsv_message_test_data-gpgsv_message_tests.ads">
+         <setup file="nmea-messages-gpgsv-gpgsv_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gpgsv-gpgsv_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-gpgsv-gpgsv_message_test_data-gpgsv_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-gpgsv-gpgsv_message_test_data-gpgsv_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gprmb.ads">
+      <test_unit target_file="nmea-messages-gprmb-gprmb_message_test_data-gprmb_message_tests.ads">
+         <setup file="nmea-messages-gprmb-gprmb_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gprmb-gprmb_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="17" column="4">
+            <test file="nmea-messages-gprmb-gprmb_message_test_data-gprmb_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="20" column="4">
+            <test file="nmea-messages-gprmb-gprmb_message_test_data-gprmb_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gprmc.ads">
+      <test_unit target_file="nmea-messages-gprmc-gprmc_message_test_data-gprmc_message_tests.ads">
+         <setup file="nmea-messages-gprmc-gprmc_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gprmc-gprmc_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="14" column="4">
+            <test file="nmea-messages-gprmc-gprmc_message_test_data-gprmc_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Constructor" line="17" column="4">
+            <test file="nmea-messages-gprmc-gprmc_message_test_data-gprmc_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-gprte.ads">
+      <test_unit target_file="nmea-messages-gprte-gprte_message_test_data-gprte_message_tests.ads">
+         <setup file="nmea-messages-gprte-gprte_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-gprte-gprte_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-gprte-gprte_message_test_data-gprte_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-gprte-gprte_message_test_data-gprte_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-hchdg.ads">
+      <test_unit target_file="nmea-messages-hchdg-hchdg_message_test_data-hchdg_message_tests.ads">
+         <setup file="nmea-messages-hchdg-hchdg_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-hchdg-hchdg_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-hchdg-hchdg_message_test_data-hchdg_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-hchdg-hchdg_message_test_data-hchdg_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-pgrme.ads">
+      <test_unit target_file="nmea-messages-pgrme-pgrme_message_test_data-pgrme_message_tests.ads">
+         <setup file="nmea-messages-pgrme-pgrme_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-pgrme-pgrme_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-pgrme-pgrme_message_test_data-pgrme_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-pgrme-pgrme_message_test_data-pgrme_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-pgrmm.ads">
+      <test_unit target_file="nmea-messages-pgrmm-pgrmm_message_test_data-pgrmm_message_tests.ads">
+         <setup file="nmea-messages-pgrmm-pgrmm_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-pgrmm-pgrmm_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-pgrmm-pgrmm_message_test_data-pgrmm_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-pgrmm-pgrmm_message_test_data-pgrmm_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages-pgrmz.ads">
+      <test_unit target_file="nmea-messages-pgrmz-pgrmz_message_test_data-pgrmz_message_tests.ads">
+         <setup file="nmea-messages-pgrmz-pgrmz_message_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-pgrmz-pgrmz_message_test_data.adb" line="8"  column="4"/>
+         <tested name="Image" line="7" column="4">
+            <test file="nmea-messages-pgrmz-pgrmz_message_test_data-pgrmz_message_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Constructor" line="10" column="4">
+            <test file="nmea-messages-pgrmz-pgrmz_message_test_data-pgrmz_message_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-links.ads">
+      <test_unit target_file="nmea-links-nmea_frame_test_data-nmea_frame_tests.ads">
+         <setup file="nmea-links-nmea_frame_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-links-nmea_frame_test_data.adb" line="8"  column="4"/>
+         <tested name="Read" line="9" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Write" line="13" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Stream" line="23" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="55" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Image" line="27" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="76" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Dump" line="30" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="97" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Check_Checksum" line="35" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="118" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Check_Checksum" line="36" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="139" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Generate_Checksum" line="37" column="4">
+            <test file="nmea-links-nmea_frame_test_data-nmea_frame_tests.adb" line="160" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-links-nmea_stream_test_data-nmea_stream_tests.ads">
+         <setup file="nmea-links-nmea_stream_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-links-nmea_stream_test_data.adb" line="9"  column="4"/>
+         <tested name="Dump" line="29" column="4">
+            <test file="nmea-links-nmea_stream_test_data-nmea_stream_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Read" line="46" column="4">
+            <test file="nmea-links-nmea_stream_test_data-nmea_stream_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Write" line="51" column="4">
+            <test file="nmea-links-nmea_stream_test_data-nmea_stream_tests.adb" line="55" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-links-test_data-tests.ads">
+         <setup file="nmea-links-test_data.adb" line="3"  column="4"/>
+         <teardown file="nmea-links-test_data.adb" line="9"  column="4"/>
+         <tested name="Image" line="62" column="4">
+            <test file="nmea-links-test_data-tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <tested name="Image" line="63" column="4">
+            <test file="nmea-links-test_data-tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:45"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="nmea-messages.ads">
+      <test_unit target_file="nmea-messages-nmea_field_test_data-nmea_field_tests.ads">
+         <setup file="nmea-messages-nmea_field_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_field_test_data.adb" line="8"  column="4"/>
+         <tested name="Read" line="43" column="4">
+            <test file="nmea-messages-nmea_field_test_data-nmea_field_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="46" column="4">
+            <test file="nmea-messages-nmea_field_test_data-nmea_field_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-utc_time_type_test_data-utc_time_type_tests.ads">
+         <setup file="nmea-messages-utc_time_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-utc_time_type_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="56" column="4">
+            <test file="nmea-messages-utc_time_type_test_data-utc_time_type_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="60" column="4">
+            <test file="nmea-messages-utc_time_type_test_data-utc_time_type_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_long_float_test_data-nmea_long_float_tests.ads">
+         <setup file="nmea-messages-nmea_long_float_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_long_float_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="70" column="4">
+            <test file="nmea-messages-nmea_long_float_test_data-nmea_long_float_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="74" column="4">
+            <test file="nmea-messages-nmea_long_float_test_data-nmea_long_float_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Image" line="78" column="4">
+            <test file="nmea-messages-nmea_long_float_test_data-nmea_long_float_tests.adb" line="55" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_hight_test_data-nmea_hight_tests.ads">
+         <setup file="nmea-messages-nmea_hight_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_hight_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="83" column="4">
+            <test file="nmea-messages-nmea_hight_test_data-nmea_hight_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="87" column="4">
+            <test file="nmea-messages-nmea_hight_test_data-nmea_hight_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_integer_test_data-nmea_integer_tests.ads">
+         <setup file="nmea-messages-nmea_integer_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_integer_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="98" column="4">
+            <test file="nmea-messages-nmea_integer_test_data-nmea_integer_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="101" column="4">
+            <test file="nmea-messages-nmea_integer_test_data-nmea_integer_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_string_test_data-nmea_string_tests.ads">
+         <setup file="nmea-messages-nmea_string_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_string_test_data.adb" line="10"  column="4"/>
+         <tested name="Read" line="110" column="4">
+            <test file="nmea-messages-nmea_string_test_data-nmea_string_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="113" column="4">
+            <test file="nmea-messages-nmea_string_test_data-nmea_string_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-latitude_type_test_data-latitude_type_tests.ads">
+         <setup file="nmea-messages-latitude_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-latitude_type_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="120" column="4">
+            <test file="nmea-messages-latitude_type_test_data-latitude_type_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="123" column="4">
+            <test file="nmea-messages-latitude_type_test_data-latitude_type_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-longitude_type_test_data-longitude_type_tests.ads">
+         <setup file="nmea-messages-longitude_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-longitude_type_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="133" column="4">
+            <test file="nmea-messages-longitude_type_test_data-longitude_type_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="137" column="4">
+            <test file="nmea-messages-longitude_type_test_data-longitude_type_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-fix_quality_type_test_data-fix_quality_type_tests.ads">
+         <setup file="nmea-messages-fix_quality_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-fix_quality_type_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-count_test_data-count_tests.ads">
+         <setup file="nmea-messages-count_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-count_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-waypoint_id_test_data-waypoint_id_tests.ads">
+         <setup file="nmea-messages-waypoint_id_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-waypoint_id_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-dilution_test_data-dilution_tests.ads">
+         <setup file="nmea-messages-dilution_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-dilution_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-meters_test_data-meters_tests.ads">
+         <setup file="nmea-messages-meters_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-meters_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_seconds_test_data-nmea_seconds_tests.ads">
+         <setup file="nmea-messages-nmea_seconds_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_seconds_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="159" column="4">
+            <test file="nmea-messages-nmea_seconds_test_data-nmea_seconds_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="162" column="4">
+            <test file="nmea-messages-nmea_seconds_test_data-nmea_seconds_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-dgps_station_id_test_data-dgps_station_id_tests.ads">
+         <setup file="nmea-messages-dgps_station_id_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-dgps_station_id_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_status_test_data-nmea_status_tests.ads">
+         <setup file="nmea-messages-nmea_status_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_status_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="175" column="4">
+            <test file="nmea-messages-nmea_status_test_data-nmea_status_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="179" column="4">
+            <test file="nmea-messages-nmea_status_test_data-nmea_status_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nmea_left_right_test_data-nmea_left_right_tests.ads">
+         <setup file="nmea-messages-nmea_left_right_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nmea_left_right_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="190" column="4">
+            <test file="nmea-messages-nmea_left_right_test_data-nmea_left_right_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="194" column="4">
+            <test file="nmea-messages-nmea_left_right_test_data-nmea_left_right_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-utc_date_type_test_data-utc_date_type_tests.ads">
+         <setup file="nmea-messages-utc_date_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-utc_date_type_test_data.adb" line="9"  column="4"/>
+         <tested name="Read" line="205" column="4">
+            <test file="nmea-messages-utc_date_type_test_data-utc_date_type_tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Write" line="209" column="4">
+            <test file="nmea-messages-utc_date_type_test_data-utc_date_type_tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-nautical_mile_type_test_data-nautical_mile_type_tests.ads">
+         <setup file="nmea-messages-nautical_mile_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-nautical_mile_type_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-knots_type_test_data-knots_type_tests.ads">
+         <setup file="nmea-messages-knots_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-knots_type_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-heading_type_test_data-heading_type_tests.ads">
+         <setup file="nmea-messages-heading_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-heading_type_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-magnetic_variation_type_test_data-magnetic_variation_type_tests.ads">
+         <setup file="nmea-messages-magnetic_variation_type_test_data.adb" line="4"  column="4"/>
+         <teardown file="nmea-messages-magnetic_variation_type_test_data.adb" line="9"  column="4"/>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="nmea-messages-test_data-tests.ads">
+         <setup file="nmea-messages-test_data.adb" line="3"  column="4"/>
+         <teardown file="nmea-messages-test_data.adb" line="9"  column="4"/>
+         <tested name="Input_Message" line="10" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="13" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Output_Message" line="14" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="34" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Read" line="221" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="55" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Read" line="222" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="76" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Try_Dump" line="223" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="97" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Register" line="229" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="118" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Deg_To_Float" line="230" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="139" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <tested name="Image" line="232" column="4">
+            <test file="nmea-messages-test_data-tests.adb" line="160" column="1" timestamp="2014-02-17 16:04:44"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+</tests_mapping>

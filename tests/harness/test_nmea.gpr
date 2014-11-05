@@ -1,0 +1,15 @@
+with "aunit";
+with "../../nmea.gpr";
+project test_nmea is
+
+   for Source_Dirs use
+     ("..//",
+      "..//messages/",
+      "common");
+
+   package Compiler is
+      for Default_Switches ("ada") use
+        ("-g", "-O1", "-gnatyM0", "-gnata", "-gnat12");
+   end Compiler;
+
+end test_nmea;

@@ -1,12 +1,15 @@
 library project NMEA is
 
-
+   for Languages use ("Ada");
    for Source_Dirs use ("src/**");
    for Object_Dir use ".obj";
    for Library_Name use "nmea";
    for Library_Dir use  "lib";
 
    package Compiler is
+      for Driver("Python") use "";
+      for Driver("Makefile") use "";
+      for Driver("Project File") use "";
       for Default_Switches ("ada") use ("-gnatwa",
                                         "-gnat12",
                                         "-gnatf",
@@ -18,5 +21,11 @@ library project NMEA is
       for Default_Switches ("ada") use ("-E");
    end Binder;
 
+   package Naming is
+      for Implementation_Suffix("Python") use ".py";
+      for Implementation_Suffix("Makefile") use ".mk";
+      for Implementation_Exceptions("Makefile") use ("Makefile");
+      for Specification_Suffix("Project File") use ".gpr";
+   end Naming;
 end NMEA;
 
