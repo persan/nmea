@@ -4,18 +4,18 @@
 --          | | |   | |    |
 --   $--AAM,A,A,x.x,N,c--c*hh<CR><LF>
 --  Field Number:
---  1. Status, BOOLEAN, A = Arrival circle entered, V = not passed 
---  2. Status, BOOLEAN, A = perpendicular passed at waypoint, V = not passed 
---  3. Arrival circle radius 
---  4. Units of radius, nautical miles 
---  5. Waypoint ID 
---  6. Checksum 
+--  1. Status, BOOLEAN, A = Arrival circle entered, V = not passed
+--  2. Status, BOOLEAN, A = perpendicular passed at waypoint, V = not passed
+--  3. Arrival circle radius
+--  4. Units of radius, nautical miles
+--  5. Waypoint ID
+--  6. Checksum
 --  Example: GPAAM,A,A,0.10,N,WPTNME*43
 --  WPTNME is the waypoint name.
 
 package NMEA.Messages.AAM is
    type AAM_Message is new Message with record
-     null;
+      null;
    end record;
 
    overriding function Image (This : AAM_Message) return String;

@@ -7,9 +7,9 @@ library project NMEA is
    for Library_Dir use  "lib";
 
    package Compiler is
-      for Driver("Python") use "";
-      for Driver("Makefile") use "";
-      for Driver("Project File") use "";
+      for Driver ("Python") use "";
+      for Driver ("Makefile") use "";
+      for Driver ("Project File") use "";
       for Default_Switches ("ada") use ("-gnatwa",
                                         "-gnat12",
                                         "-gnatf",
@@ -22,10 +22,9 @@ library project NMEA is
    end Binder;
 
    package Naming is
-      for Implementation_Suffix("Python") use ".py";
-      for Implementation_Suffix("Makefile") use ".mk";
-      for Implementation_Exceptions("Makefile") use ("Makefile");
-      for Specification_Suffix("Project File") use ".gpr";
+      for Implementation_Suffix ("Python") use ".py";
+      for Implementation_Suffix ("Makefile") use ".mk";
+      for Implementation_Exceptions ("Makefile") use ("Makefile");
+      for Implementation_Suffix ("Project File") use ".gpr";
    end Naming;
 end NMEA;
-

@@ -1,6 +1,6 @@
-separate (NMEA.Messages.Vbw)
+separate (NMEA.Messages.VBW)
 overriding
-function Image (This : Vbw_Message) return String is
+function Image (This : VBW_Message) return String is
       pragma Unreferenced (This);
 begin
    return "Image ""Vbw"" not implemented";
