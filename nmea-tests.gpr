@@ -2,7 +2,7 @@ with "nmea.gpr";
 project NMEA.Tests is
 
    for Languages use ("Ada","Python","Project File","Makefile");
-   for Source_Dirs use (".","tests/**");
+   for Source_Dirs use (".","tests");
    for Object_Dir use ".obj/" & Project'name ;
    for Exec_Dir use "bin";
 

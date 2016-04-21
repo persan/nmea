@@ -2,20 +2,20 @@ with Ada.Text_IO.Text_Streams;
 with NMEA.Links;
 with NMEA.Messages;
 
-with NMEA.Messages.CPGGA; pragma Unreferenced (NMEA.Messages.CPGGA);
-with NMEA.Messages.GPBOD; pragma Unreferenced (NMEA.Messages.GPBOD);
-with NMEA.Messages.GPCGA; pragma Unreferenced (NMEA.Messages.GPCGA);
-with NMEA.Messages.GPGGA; pragma Unreferenced (NMEA.Messages.GPGGA);
-with NMEA.Messages.GPGLL; pragma Unreferenced (NMEA.Messages.GPGLL);
-with NMEA.Messages.GPGSA; pragma Unreferenced (NMEA.Messages.GPGSA);
-with NMEA.Messages.GPGSV; pragma Unreferenced (NMEA.Messages.GPGSV);
-with NMEA.Messages.GPRMB; pragma Unreferenced (NMEA.Messages.GPRMB);
-with NMEA.Messages.GPRMC; pragma Unreferenced (NMEA.Messages.GPRMC);
-with NMEA.Messages.GPRTE; pragma Unreferenced (NMEA.Messages.GPRTE);
-with NMEA.Messages.HCHDG; pragma Unreferenced (NMEA.Messages.HCHDG);
-with NMEA.Messages.PGRME; pragma Unreferenced (NMEA.Messages.PGRME);
-with NMEA.Messages.PGRMM; pragma Unreferenced (NMEA.Messages.PGRMM);
-with NMEA.Messages.PGRMZ; pragma Unreferenced (NMEA.Messages.PGRMZ);
+with NMEA.Messages.GGA; pragma Unreferenced (NMEA.Messages.GGA);
+with NMEA.Messages.BOD; pragma Unreferenced (NMEA.Messages.BOD);
+with NMEA.Messages.CGA; pragma Unreferenced (NMEA.Messages.CGA);
+pragma Unreferenced (NMEA.Messages.GGA);
+with NMEA.Messages.GLL; pragma Unreferenced (NMEA.Messages.GLL);
+with NMEA.Messages.GSA; pragma Unreferenced (NMEA.Messages.GSA);
+with NMEA.Messages.GSV; pragma Unreferenced (NMEA.Messages.GSV);
+with NMEA.Messages.RMB; pragma Unreferenced (NMEA.Messages.RMB);
+with NMEA.Messages.RMC; pragma Unreferenced (NMEA.Messages.RMC);
+with NMEA.Messages.RTE; pragma Unreferenced (NMEA.Messages.RTE);
+with NMEA.Messages.HDG; pragma Unreferenced (NMEA.Messages.HDG);
+with NMEA.Messages.RME; pragma Unreferenced (NMEA.Messages.RME);
+with NMEA.Messages.RMM; pragma Unreferenced (NMEA.Messages.RMM);
+with NMEA.Messages.RMZ; pragma Unreferenced (NMEA.Messages.RMZ);
 
 
 with Ada.Exceptions;

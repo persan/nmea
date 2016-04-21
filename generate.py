@@ -50,8 +50,8 @@ def gen(src):
          if ma:
             name=ma.group(1)
    if name:
-      f1=join(dir, ada2file(tmplt_1_fname % {"MSG" : name}) + ".adb")
-      f2=join(dir, ada2file(tmplt_2_fname % {"MSG" : name}) + ".adb")
+      f1=join(dir, "impl", ada2file(tmplt_1_fname % {"MSG" : name}) + ".adb")
+      f2=join(dir, "impl", ada2file(tmplt_2_fname % {"MSG" : name}) + ".adb")
       if not exists(f1):
          with file(f1,"w") as outf:
             outf.write(tmplt_1 % {"MSG" : name})
