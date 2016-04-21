@@ -5,3 +5,4 @@ bin/*
 gmon.out
 gprof
 NMEA.data.out
+*.pyc
