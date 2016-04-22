@@ -1,11 +1,13 @@
 with Ada.Tags.Generic_Dispatching_Constructor;
 with Ada.Streams;
 with Ada.Calendar;
-
+with NMEA.TalkerIDs;
 package NMEA.Messages is
 
    --  This package provides a root for NMEA messages
-   type Message is interface;
+   type Message is abstract tagged record
+      Talker : NMEA.TalkerIDs.TalkerId;
+   end record;
 
    function Input_Message
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class)

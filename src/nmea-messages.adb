@@ -48,20 +48,20 @@ package body NMEA.Messages is
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class)
       return Message'Class
    is
-      Name   : String (1 .. 5);
-      Cursor : Natural := Name'First;
-      Dummy  : Character;
+      TalkerId : NMEA.TalkerIDs.TalkerId;
+      Name     : String (1 .. 3);
+      Cursor   : Natural := Name'First;
+      Dummy    : Character;
    begin
       Character'Read (Stream, Name (Cursor)); -- skip leading $
-      for I in 1 .. 5 loop
-         Character'Read (Stream, Name (Cursor));
-         Cursor := Cursor + 1;
-      end loop;
+      String'Read (Stream, TalkerId);
+      String'Read (Stream, Name);
+
       if not Tag_Map.Contains (Name) then
          raise Constraint_Error with Name  & " Not registerd!";
       end if;
       Character'Read (Stream, Dummy); -- skip first ,
-      return Result : Message'Class := Construct_Message (Tag_Map.Element (Name), Stream) do
+      return Result : constant Message'Class := Construct_Message (Tag_Map.Element (Name), Stream) do
          null;
       end return;
    end Input_Message;
@@ -76,6 +76,7 @@ package body NMEA.Messages is
    is
    begin
       Character'Write (Stream, '$');
+      String'Write (Stream, Item.Talker);
       String'Write (Stream, Name_Map.Element (Item'Tag));
       Message'Write (Stream, Item);
       String'Write (Stream, ASCII.CR & ASCII.LF);
@@ -290,7 +291,7 @@ package body NMEA.Messages is
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                              Data   : out NMEA_Integer) is
+                   Data   : out NMEA_Integer) is
       Buffer : constant String := Read (Stream);
    begin
       Data.Is_Valid := False;
@@ -301,7 +302,7 @@ package body NMEA.Messages is
    end;
    overriding
    procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                               Data   : in NMEA_Integer) is
+                    Data   : in NMEA_Integer) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
       if Data.Is_Valid then
@@ -475,7 +476,7 @@ package body NMEA.Messages is
 
    overriding
    procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                               Data   : in NMEA_String) is
+                    Data   : in NMEA_String) is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
       if Data.Is_Valid then
