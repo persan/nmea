@@ -4,6 +4,7 @@
 --
 --  ----------------------------------------------------------------------------
 
+
 with Ada.Tags; use Ada.Tags;
 package body NMEA.Abstract_Application is
 

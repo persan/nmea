@@ -4,10 +4,15 @@
 --
 --  ----------------------------------------------------------------------------
 
+<<<<<<< Updated upstream
 with NMEA.Messages.XDR;
 with NMEA.Messages.R00;
 with NMEA.Messages.MTW;
 with NMEA.Messages.APB;
+=======
+
+with NMEA.Messages.DTM;
+>>>>>>> Stashed changes
 with NMEA.Messages.GBS;
 with NMEA.Messages.GLL;
 with NMEA.Messages.TPC;
