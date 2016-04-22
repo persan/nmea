@@ -11,6 +11,7 @@ for path in glob.glob("src/messages/*.ads"):
             if m:
                 names.append(m.group(1))
 
+names.sort()
 
 HEADER = """--  ----------------------------------------------------------------------------
 --
@@ -34,12 +35,12 @@ CALL = """   procedure On_%(name)s (Self    : in out Application_Interface;
 """
 TEST_CALL = """
    overriding
-   procedure On_%(name)s (Self    : Application;
+   procedure On_%(name)s (Self    : in out Application;
                      Message : NMEA.Messages.%(name)s.%(name)s_Message);"""
 
 TEST_PROCEDURE = """
    overriding
-   procedure On_%(name)s (Self    : Application;
+   procedure On_%(name)s (Self    : in out Application;
                      Message : NMEA.Messages.%(name)s.%(name)s_Message) is
       pragma Unreferenced (Self);
    begin
@@ -57,7 +58,7 @@ package NMEA.Abstract_Application is
 
 %(calls)s
 
-   procedure Dispatch (App : Application_Interface'Class; Message : NMEA.Messages.Message'Class);
+   procedure Dispatch (App : in out Application_Interface'Class; Message : NMEA.Messages.Message'Class);
 end NMEA.Abstract_Application;
 """
 
@@ -77,7 +78,7 @@ package body NMEA.Abstract_Application is
 
 
    procedure Dispatch
-     (App     : Application_Interface'Class;
+     (App     : in out Application_Interface'Class;
       Message : NMEA.Messages.Message'Class)
    is
       Message_Tag : constant Ada.Tags.Tag := Message'Tag;
@@ -92,6 +93,31 @@ package body NMEA.Abstract_Application is
 
 end NMEA.Abstract_Application;
 """
+
+
+
+TEST_SPEC = TEST_HEADER + """
+%(imports)s
+
+with Ada.Finalization;
+with NMEA.Abstract_Application;
+
+package NMEA.Tests.Test_Application is
+
+   type Application is new Ada.Finalization.Controlled and
+      NMEA.Abstract_Application.Application_Interface with
+   record
+      null;
+   end record;
+   
+   function Is_Active (Self : Application) return Boolean;
+   
+%(calls)s
+
+end NMEA.Tests.Test_Application;
+"""
+
+
 TEST_BODY = TEST_HEADER + """
 with Ada.Text_IO;
 with GNAT.Source_Info;
@@ -99,7 +125,12 @@ package body NMEA.Tests.Test_Application is
 
    use Ada.Text_IO;
    use GNAT.Source_Info;
-
+   
+   function Is_Active (Self : Application) return Boolean is
+      pragma Unreferenced (Self);
+   begin
+      return True;
+   end Is_Active;
 %(test_procedures)s
 
 end NMEA.Tests.Test_Application;
@@ -127,24 +158,6 @@ with file("src/nmea-abstract_application.adb", "w") as body:
     body.write(BODY % {"dispatch": "\n".join(dispatch)})
 
 
-TEST_SPEC = TEST_HEADER + """
-%(imports)s
-
-with Ada.Finalization;
-with NMEA.Abstract_Application;
-
-package NMEA.Tests.Test_Application is
-
-   type Application is new Ada.Finalization.Controlled and
-      NMEA.Abstract_Application.Application_Interface with
-   record
-      null;
-   end record;
-
-%(calls)s
-
-end NMEA.Tests.Test_Application;
-"""
 
 with file("tests/nmea-tests-test_application.ads", "w") as spec:
     spec.write(TEST_SPEC % {"imports": "\n".join(imports),
