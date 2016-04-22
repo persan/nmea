@@ -4,7 +4,6 @@ with NMEA.Messages;
 
 with NMEA.Messages.GGA; pragma Unreferenced (NMEA.Messages.GGA);
 with NMEA.Messages.BOD; pragma Unreferenced (NMEA.Messages.BOD);
-with NMEA.Messages.CGA; pragma Unreferenced (NMEA.Messages.CGA);
 pragma Unreferenced (NMEA.Messages.GGA);
 with NMEA.Messages.GLL; pragma Unreferenced (NMEA.Messages.GLL);
 with NMEA.Messages.GSA; pragma Unreferenced (NMEA.Messages.GSA);
@@ -13,9 +12,6 @@ with NMEA.Messages.RMB; pragma Unreferenced (NMEA.Messages.RMB);
 with NMEA.Messages.RMC; pragma Unreferenced (NMEA.Messages.RMC);
 with NMEA.Messages.RTE; pragma Unreferenced (NMEA.Messages.RTE);
 with NMEA.Messages.HDG; pragma Unreferenced (NMEA.Messages.HDG);
-with NMEA.Messages.RME; pragma Unreferenced (NMEA.Messages.RME);
-with NMEA.Messages.RMM; pragma Unreferenced (NMEA.Messages.RMM);
-with NMEA.Messages.RMZ; pragma Unreferenced (NMEA.Messages.RMZ);
 
 
 with Ada.Exceptions;

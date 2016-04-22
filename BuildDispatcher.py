@@ -35,7 +35,7 @@ package NMEA.Abstract_Application is
 end NMEA.Abstract_Application;
 """
 
-DISPATCH = """      elsif Message'Tag = NMEA.Messages.%(name)s.%(name)s_Message'Tag then
+DISPATCH = """      elsif Message_Tag = NMEA.Messages.%(name)s.%(name)s_Message'Tag then
          App.On_%(name)s (NMEA.Messages.%(name)s.%(name)s_Message (Message));"""
 
 BODY = HEADER + """with Ada.Tags; use Ada.Tags;
@@ -53,6 +53,7 @@ package body NMEA.Abstract_Application is
      (App     : Application_Interface'Class;
       Message : NMEA.Messages.Message'Class)
    is
+      Message_Tag : constant Ada.Tags.Tag := Message'Tag;
    begin
       if False then
          null;

@@ -3,8 +3,8 @@
 --          |                |
 --   $--R00,c---c,c---c,....*hh<CR><LF>
 --  Field Number:
---  1. waypoint ID 
---  …
+--  1. waypoint ID
+--  ...|
 --  n) checksum
 
 package NMEA.Messages.R00 is

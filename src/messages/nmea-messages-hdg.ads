@@ -1,4 +1,15 @@
-with Ada.Streams;
+--  HDG - Heading - Deviation & Variation
+--          1   2   3 4   5 6
+--          |   |   | |   | |
+--   $--HDG,x.x,x.x,a,x.x,a*hh<CR><LF>
+--  Field Number:
+--  1. Magnetic Sensor heading in degrees
+--  2. Magnetic Deviation, degrees
+--  3. Magnetic Deviation direction, E = Easterly, W = Westerly
+--  4. Magnetic Variation degrees
+--  5. Magnetic Variation direction, E = Easterly, W = Westerly
+--  6. Checksum
+
 package NMEA.Messages.HDG is
    type HDG_Message is new Message with record
      null;

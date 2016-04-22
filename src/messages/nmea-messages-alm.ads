@@ -1,4 +1,4 @@
---  ALM - GPS Almanac Data
+   --  ALM - GPS Almanac Data
 --  This sentence expresses orbital data for a specified GPS satellite.
 --          1   2   3  4   5  6    7  8    9    10     11     12     13     14  15   16
 --          |   |   |  |   |  |    |  |    |    |      |      |      |      |   |    |
@@ -24,6 +24,8 @@
 --  Example: $GPALM,1,1,15,1159,00,441d,4e,16be,fd5e,a10c9f,4a2da4,686e81,58cbe1,0a4,001*5B
 
 package NMEA.Messages.ALM is
+
+
    type ALM_Message is new Message with record
       Total_Number_Of_Messages : NMEA_Integer;
       Message_Number           : NMEA_Integer;
