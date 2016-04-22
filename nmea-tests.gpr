@@ -1,12 +1,15 @@
 with "nmea.gpr";
 project NMEA.Tests is
 
-   for Languages use ("Ada","Python","Project File","Makefile");
-   for Source_Dirs use (".","tests");
-   for Object_Dir use ".obj/" & Project'name ;
+   for Languages use ("Ada", "Python", "Project File", "Makefile");
+   for Source_Dirs use (".", "tests");
+   for Object_Dir use ".obj/" & project'Name ;
    for Exec_Dir use "bin";
 
-   for Main use ("nmea-main.adb");
+   for Main use ("nmea-tests-test_application-main.adb");
+   package Builder is
+      for Executable ("nmea-tests-test_application-main.adb") use "nmea-main";
+   end Builder;
 
    package Compiler renames NMEA.Compiler;
    package Binder renames NMEA.Binder;

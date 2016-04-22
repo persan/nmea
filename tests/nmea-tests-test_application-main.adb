@@ -9,7 +9,7 @@ begin
    Src.Set (Rate => GNAT.Serial_Communications.B1200,
             Bits => GNAT.Serial_Communications.CS8,
             Timeout => 5.0);
-   loop
+   while App.Is_Active loop
       NMEA.Abstract_Application.Dispatch (App, NMEA.Messages.Message'Class'Input (Src'Access));
    end loop;
    Src.Close;
