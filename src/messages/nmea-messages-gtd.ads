@@ -3,11 +3,12 @@
 --           |   |   |   |   |  |
 --   $--GTD,x.x,x.x,x.x,x.x,x.x*hh<CR><LF>
 --  Field Number:
---  1. time difference 
---  2. time difference 
---  3. time difference 
---  4. time difference 
---  5. time difference n) checksum 
+--  1. time difference
+--  2. time difference
+--  3. time difference
+--  4. time difference
+--  5. time difference
+--  n. Checksum
 
 package NMEA.Messages.GTD is
    type GTD_Message is new Message with record

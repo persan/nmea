@@ -1,4 +1,4 @@
-   --  APA - Autopilot Sentence "A"
+--  APA - Autopilot Sentence "A"
 --  This sentence is sent by some GPS receivers to allow them to be used to control an autopilot unit. This sentence is commonly used by autopilots and contains navigation receiver warning flag status, cross-track-error, waypoint arrival status, initial bearing from origin waypoint to the destination, continuous bearing from present position to destination and recommended heading-to-steer to destination waypoint for the active navigation leg of the journey.
 --          1 2  3   4 5 6 7  8  9 10    11
 --          | |  |   | | | |  |  | |     |
@@ -14,14 +14,14 @@
 --  8. Bearing origin to destination
 --  9. M = Magnetic, T = True
 --  10. Destination Waypoint ID
---  11. checksum
+--  11. Checksum
 --  Example: $GPAPA,A,A,0.10,R,N,V,V,011,M,DEST,011,M*82
 
 package NMEA.Messages.APA is
 
 
    type APA_Message is new Message with record
-     null;
+      null;
    end record;
 
    overriding function Image (This : APA_Message) return String;

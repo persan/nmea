@@ -2,10 +2,10 @@
 --           1  2 3
 --           |  | |
 --   $--ITS,x.x,M*hh<CR><LF>
---  Field Number)
---  1. Second spread distance 
---  2. Meters 
---  3. Checksum. 
+--  Field Number:
+--  1. Second spread distance
+--  2. Meters
+--  3. Checksum.
 --  From [GLOBALSAT]. Shown with a "@II" leader rather than "$GP".
 
 package NMEA.Messages.ITS is

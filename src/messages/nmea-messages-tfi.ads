@@ -2,10 +2,12 @@
 --          1 2 3 4
 --          | | | |
 --   $--TFI,x,y,z*hh<CR><LF>
---  Field number:
---  1. Catch sensor #1 (0 = off, 1 = on, 2 = no answer) 
---  2. Catch sensor #2 (0 = off, 1 = on, 2 = no answer) 
---  3. Catch sensor #3 (0 = off, 1 = on, 2 = no answer) 
+--  Field Number:
+--  1. Catch sensor #1 (0 = off, 1 = on, 2 = no answer)
+--  2. Catch sensor #2 (0 = off, 1 = on, 2 = no answer)
+--  3. Catch sensor #3 (0 = off, 1 = on, 2 = no answer)
+--  4. Checksum.
+
 --  From [GLOBALSAT]. Shown with a "@II" leader rather than "$GP".
 
 package NMEA.Messages.TFI is

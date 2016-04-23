@@ -2,10 +2,10 @@
 --           1  2 3
 --           |  | |
 --   $--TDS,x.x,M*hh<CR><LF>
---  Field Number)
---  1. Distance between trawl doors 
---  2. Meters (0-300) 
---  3. Checksum. 
+--  Field Number:
+--  1. Distance between trawl doors
+--  2. Meters (0-300)
+--  3. Checksum.
 --  From [GLOBALSAT]. Shown with a "@II" leader rather than "$GP".
 
 package NMEA.Messages.TDS is

@@ -3,10 +3,11 @@
 --          | |   | |            |
 --   $--XDR,a,x.x,a,c--c, ..... *hh<CR><LF>
 --  Field Number:
---  1. Transducer Type 
---  2. Measurement Data 
---  3. Units of measurement 
---  4. Name of transducer 
+--  1. Transducer Type
+--  2. Measurement Data
+--  3. Units of measurement
+--  4. Name of transducer
+--  n. Checksum
 --  There may be any number of quadruplets like this, each describing a sensor. The last field will be a checksum as usual.
 
 package NMEA.Messages.XDR is

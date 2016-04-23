@@ -2,7 +2,12 @@
 --          1   2   3      4                     x
 --          |   |   |      |                     |
 --   $--SFI,x.x,x.x,xxxxxx,c .......... xxxxxx,c*hh<CR><LF>
---  Field Number: 1. Total Number Of Messages 2. Message Number 3. Frequency 1 4. Mode 1 x. Checksum
+--  Field Number:
+--   1. Total Number Of Messages
+--   2. Message Number
+--   3. Frequency 1
+--   4. Mode 1
+--   x. Checksum
 
 package NMEA.Messages.SFI is
    type SFI_Message is new Message with record
