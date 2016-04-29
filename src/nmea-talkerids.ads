@@ -72,7 +72,7 @@ package NMEA.TalkerIDs is
    Talker_VW : constant TalkerId := "VW"; -- Velocity Sensor
    Talker_WI : constant TalkerId := "WI"; -- Weather Instruments
    Talker_YC : constant TalkerId := "YC"; -- Transducer - Temperature (obsolete)
-   Talker_YD : constant TalkerId := "YD"; -- "Transducer - Displacement
+   Talker_YD : constant TalkerId := "YD"; -- Transducer - Displacement
    Talker_YF : constant TalkerId := "YF"; -- Transducer - Frequency (obsolete)
    Talker_YL : constant TalkerId := "YL"; -- Transducer - Level (obsolete)
    Talker_YP : constant TalkerId := "YP"; -- Transducer - Pressure (obsolete)

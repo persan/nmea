@@ -5,8 +5,8 @@
 --  Field Number:
 --  1. Total number of messages being transmitted
 --  2. Message Number
-
 --  4. Waypoint ID
+--  n. Checksum
 --  More waypoints follow. Last field is a checksum as usual.
 --  The Garmin 65 and possibly other units report a $GPR00 in the same format.
 

@@ -5,7 +5,7 @@
 --  Field Number:
 --  1. waypoint ID
 --  ...|
---  n) checksum
+--  n. Checksum
 
 package NMEA.Messages.R00 is
    type R00_Message is new Message with record
