@@ -12,6 +12,9 @@ with NMEA.Messages.RMB; pragma Unreferenced (NMEA.Messages.RMB);
 with NMEA.Messages.RMC; pragma Unreferenced (NMEA.Messages.RMC);
 with NMEA.Messages.RTE; pragma Unreferenced (NMEA.Messages.RTE);
 with NMEA.Messages.HDG; pragma Unreferenced (NMEA.Messages.HDG);
+with NMEA.Messages.RME; pragma Unreferenced (NMEA.Messages.RME);
+with NMEA.Messages.RMZ; pragma Unreferenced (NMEA.Messages.RMZ);
+with NMEA.Messages.RMM; pragma Unreferenced (NMEA.Messages.RMM);
 
 
 with Ada.Exceptions;
