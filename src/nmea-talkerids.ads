@@ -1,3 +1,4 @@
+with Ada.Streams;
 package NMEA.TalkerIDs is
 
    --  NMEA sentences do, however, include a "talker ID" a two-character prefix that
@@ -6,7 +7,13 @@ package NMEA.TalkerIDs is
    --  identifying a generic GPS, but all of the following are well known:
 
    --  Common talker IDs
-   subtype TalkerId is String (1 .. 2);
+   type TalkerId is new String (1 .. 2);
+
+   procedure Read (S : not null access Ada.Streams.Root_Stream_Type'Class; Item :  out TalkerId) is null;
+   procedure Write (S : not null access Ada.Streams.Root_Stream_Type'Class; Item : TalkerId) is null;
+   for TalkerId'Read use Read;
+   for TalkerId'Write use Write;
+
 
    --  LC - Loran-C is a marine navigation system run by the U.S. government,
    --  which is planning to shut it down in favor of GPS.

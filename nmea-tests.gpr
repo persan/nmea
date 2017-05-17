@@ -6,9 +6,10 @@ project NMEA.Tests is
    for Object_Dir use ".obj/" & project'Name ;
    for Exec_Dir use "bin";
 
-   for Main use ("nmea-tests-test_application-main.adb");
+   for Main use ("nmea-main.adb",
+                 "nmea-tests-test_application-main.adb");
    package Builder is
-      for Executable ("nmea-tests-test_application-main.adb") use "nmea-main";
+      for Executable ("nmea-tests-test_application-main.adb") use "nmea-app";
    end Builder;
 
    package Compiler renames NMEA.Compiler;

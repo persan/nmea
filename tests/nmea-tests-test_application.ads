@@ -81,17 +81,20 @@ with NMEA.Messages.ZTG;
 
 with Ada.Finalization;
 with NMEA.Abstract_Application;
+with Ada.Streams;
 
 package NMEA.Tests.Test_Application is
 
    type Application is new Ada.Finalization.Controlled and
-      NMEA.Abstract_Application.Application_Interface with
-   record
-      null;
-   end record;
-   
+     NMEA.Abstract_Application.Application_Interface with
+      record
+         null;
+      end record;
+
    function Is_Active (Self : Application) return Boolean;
-   
+
+   not overriding
+   procedure Run (Self : in out Application; Src : not null access Ada.Streams.Root_Stream_Type'Class);
 
    overriding
    procedure On_AAM (Self    : in out Application;

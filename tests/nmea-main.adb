@@ -25,8 +25,8 @@ procedure NMEA.Main is
    Out_File     : Ada.Text_IO.File_Type;
 
 begin
-   Open   (In_File, Ada.Text_IO.In_File,   "NMEA.data");
-   Create (Out_File, Ada.Text_IO.Out_File, "NMEA.data.out");
+   Open   (In_File, Ada.Text_IO.In_File,   "data/NMEA.data");
+   Create (Out_File, Ada.Text_IO.Out_File, "data/NMEA.data.out");
 
    begin
       while not End_Of_File (In_File) loop
@@ -34,7 +34,7 @@ begin
          Put_Line ("------------------------------------------------------------------------------------------------");
          Put_Line (Buffer.Image);
          declare
-            Msg : NMEA.Messages.Message'Class := NMEA.Messages.Message'Class'Input (Buffer.Stream);
+            Msg : constant NMEA.Messages.Message'Class := NMEA.Messages.Message'Class'Input (Buffer.Stream);
          begin
             Put ("              ");
             NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Ada.Text_IO.Standard_Output), Msg);

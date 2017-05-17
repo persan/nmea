@@ -11,12 +11,22 @@ package body NMEA.Tests.Test_Application is
 
    use Ada.Text_IO;
    use GNAT.Source_Info;
-   
+
    function Is_Active (Self : Application) return Boolean is
       pragma Unreferenced (Self);
    begin
       return True;
    end Is_Active;
+
+
+   not overriding
+   procedure Run (Self : in out Application; Src : not null access Ada.Streams.Root_Stream_Type'Class) is
+   begin
+      while Self.Is_Active loop
+         NMEA.Abstract_Application.Dispatch (Self, NMEA.Messages.Message'Class'Input (Src));
+      end loop;
+   end;
+
 
    overriding
    procedure On_AAM (Self    : in out Application;

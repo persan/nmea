@@ -9,3 +9,6 @@ generete_Tests:
 compile:
 clean:
 test:
+
+xml::
+	gnat2xml -P ${_project} --output-dir=xml -j0 --incremental

@@ -15,6 +15,7 @@ library project NMEA is
                                         "-gnatf",
                                         "-gnata",
                                         "-gnatyaABcfhiklnOprstx");
+      for Switches ("nmea-abstract_application.adb") use Compiler'Default_Switches ("ada") & ("-O2");
    end Compiler;
 
    package Binder is

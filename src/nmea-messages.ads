@@ -2,8 +2,9 @@ with Ada.Tags.Generic_Dispatching_Constructor;
 with Ada.Streams;
 with Ada.Calendar;
 with NMEA.TalkerIDs;
+with Ada.Finalization;
+with GNAT.Strings;
 package NMEA.Messages is
-
    --  This package provides a root for NMEA messages
    type Message is abstract tagged record
       Talker : NMEA.TalkerIDs.TalkerId;
@@ -35,7 +36,7 @@ package NMEA.Messages is
 
    function Image (This : Message) return String is abstract;
 
-   type NMEA_Field is tagged record
+   type NMEA_Field is new Ada.Finalization.Controlled with  record
       Is_Valid : Boolean := False;
    end record with
      Read => Read,
@@ -97,23 +98,37 @@ package NMEA.Messages is
      Write => Write;
 
 
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding
+   procedure Read
+     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                               Data   : out NMEA_Integer);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+   overriding
+   procedure Write
+     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                Data   : in NMEA_Integer);
 
-   type NMEA_String (Max_Length : Natural) is new NMEA_Field with record
-      Length : Natural := 0;
-      Data   : String (1 .. Max_Length);
+   type NMEA_String is new NMEA_Field with record
+      Value : GNAT.Strings.String_Access;
    end record with
      Read => Read,
      Write => Write;
-   overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                              Data   : out NMEA_String);
+   overriding
+   procedure Read
+     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+      Data   : out NMEA_String);
 
-   overriding procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
-                               Data   : in NMEA_String);
+   overriding
+   procedure Write
+     (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+      Data   : in NMEA_String);
+
+
+   overriding
+   procedure Finalize (Data : in out NMEA_String);
+
+   overriding
+   procedure Adjust (Data : in out NMEA_String);
 
 
    type Latitude_Type is new NMEA_Long_Float with null record with
@@ -214,12 +229,81 @@ package NMEA.Messages is
 
    type Nautical_Mile_Type is new NMEA_Long_Float with null record;
    type Knots_Type is new NMEA_Long_Float with null record;
+   type KmH_Type is new NMEA_Long_Float with null record;
    type Heading_Type is new NMEA_Long_Float with null record;
    type Magnetic_Variation_Type is new Longitude_Type with null record;
 
 
-private
+   type  NMEA_Constant_Character (Value : Character) is new NMEA_Field with null record  with
+     Read => Read,
+     Write => Write;
 
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Constant_Character);
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Constant_Character);
+
+
+   type  NMEA_Boolean (False, True : Character) is new NMEA_Field with record
+      Value : Boolean;
+   end record with
+     Read => Read,
+     Write => Write;
+
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Boolean);
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Boolean);
+
+
+   type  NMEA_Hex_Value is new NMEA_Field with record
+      Value  : Ada.Streams.Stream_Element_Array (1 .. 4);
+   end record
+     with
+     Read => Read,
+     Write => Write;
+
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Hex_Value);
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Hex_Value);
+
+
+   type NMEA_Waypoint_ID is new NMEA_String with null record;
+   type NMEA_Dummy_Field is  new NMEA_String with  null record;
+   type NMEA_Waypoint_ID_Access is access all NMEA_Waypoint_ID;
+
+   type Waypoint_Array is array (Natural range <>) of NMEA_Waypoint_ID_Access;
+   type Waypoint_Array_Access is access all Waypoint_Array;
+   type NMEA_Waypoints is new NMEA_Field with record
+      Value : Waypoint_Array_Access;
+   end record;
+
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Waypoints);
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Waypoints);
+
+   overriding
+   procedure Finalize (Data : in out NMEA_Waypoints);
+
+   overriding
+   procedure Adjust (Data : in out NMEA_Waypoints);
+
+
+private
    function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return String;
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class);
    procedure Try_Dump (Stream : not null access Ada.Streams.Root_Stream_Type'Class);

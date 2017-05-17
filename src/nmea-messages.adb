@@ -18,7 +18,7 @@ package body NMEA.Messages is
    use  Ada.Strings.Fixed;
    function "<" (L, R : Ada.Tags.Tag) return Boolean;
 
-   Witespace_Set           : constant Character_Set := To_Set (' ' & ASCII.HT & ASCII.VT & ASCII.LF & ASCII.CR);
+   Witespace_Set : constant Character_Set := To_Set (' ' & ASCII.HT & ASCII.VT & ASCII.LF & ASCII.CR);
 
    package Tag_Maps  is new Ada.Containers.Indefinite_Hashed_Maps (String, Ada.Tags.Tag, Ada.Strings.Hash, "=");
    package Name_Maps is new Ada.Containers.Indefinite_Ordered_Maps (Ada.Tags.Tag, String, "<", "=");
@@ -50,19 +50,18 @@ package body NMEA.Messages is
    is
       TalkerId : NMEA.TalkerIDs.TalkerId;
       Name     : String (1 .. 3);
-      Cursor   : Natural := Name'First;
       Dummy    : Character;
    begin
-      Character'Read (Stream, Name (Cursor)); -- skip leading $
-      String'Read (Stream, TalkerId);
+      Character'Read (Stream, Dummy); -- skip leading $
+      String'Read (Stream, String (TalkerId));
       String'Read (Stream, Name);
 
       if not Tag_Map.Contains (Name) then
          raise Constraint_Error with Name  & " Not registerd!";
       end if;
       Character'Read (Stream, Dummy); -- skip first ,
-      return Result : constant Message'Class := Construct_Message (Tag_Map.Element (Name), Stream) do
-         null;
+      return Result :  Message'Class := Construct_Message (Tag_Map.Element (Name), Stream) do
+         Result.Talker := TalkerId;
       end return;
    end Input_Message;
 
@@ -76,7 +75,7 @@ package body NMEA.Messages is
    is
    begin
       Character'Write (Stream, '$');
-      String'Write (Stream, Item.Talker);
+      String'Write (Stream, String (Item.Talker));
       String'Write (Stream, Name_Map.Element (Item'Tag));
       Message'Write (Stream, Item);
       String'Write (Stream, ASCII.CR & ASCII.LF);
@@ -130,7 +129,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  NMEA_Field
+   --  #  NMEA_Field
    --  ###############
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                    Data   : out NMEA_Field) is
@@ -147,7 +146,7 @@ package body NMEA.Messages is
    end;
 
    --  ##############
-   --  UTC_Time_Type
+   --  #  UTC_Time_Type
    --  ##############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -178,7 +177,7 @@ package body NMEA.Messages is
 
 
    --  ##############
-   --  NMEA_Status
+   --  #  NMEA_Status
    --  ##############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -210,7 +209,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  NMEA_Left_Right
+   --  #  NMEA_Left_Right
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -245,7 +244,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  NMEA_Long_Float
+   --  #  NMEA_Long_Float
    --  ###############
 
    overriding
@@ -287,7 +286,7 @@ package body NMEA.Messages is
    end;
 
    --  ###############
-   --  NMEA_Integer
+   --  #  NMEA_Integer
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -311,7 +310,7 @@ package body NMEA.Messages is
    end;
 
    --  ###############
-   --  Latitude_Type
+   --  #  Latitude_Type
    --  ###############
    overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                               Data   : out Latitude_Type) is
@@ -346,7 +345,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  Longitude_Type
+   --  #  Longitude_Type
    --  ###############
    overriding procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                               Data   : out Longitude_Type) is
@@ -381,7 +380,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  NMEA_Seconds
+   --  #  NMEA_Seconds
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -407,7 +406,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  UTC_Date_Type
+   --  #  UTC_Date_Type
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -435,7 +434,7 @@ package body NMEA.Messages is
 
 
    --  ###############
-   --  Nmea_Hight
+   --  #  Nmea_Hight
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -459,7 +458,7 @@ package body NMEA.Messages is
    end;
 
    --  ###############
-   --  NMEA_String
+   --  #  NMEA_String
    --  ###############
    overriding
    procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -468,8 +467,7 @@ package body NMEA.Messages is
    begin
       Data.Is_Valid := False;
       if Buffer'Length > 0 then
-         Ada.Strings.Fixed.Move (Buffer, Data.Data);
-         Data.Length := Buffer'Length;
+         Data.Value := new String'(Buffer);
          Data.Is_Valid := True;
       end if;
    end;
@@ -480,8 +478,117 @@ package body NMEA.Messages is
    begin
       NMEA_Field'Write (Stream, NMEA_Field (Data));
       if Data.Is_Valid then
-         String'Write (Stream, Data.Data (Data.Data'First .. Data.Length));
+         String'Write (Stream, Data.Value.all);
       end if;
    end;
+
+   overriding
+   procedure Finalize (Data : in out NMEA_String) is
+   begin
+      GNAT.Strings.Free (Data.Value);
+   end;
+
+   overriding
+   procedure Adjust (Data : in out NMEA_String) is
+   begin
+      Data.Value := new String'(Data.Value.all);
+   end;
+
+
+   --  ##########################
+   --  #  NMEA_Constant_Character
+   --  ##########################
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Constant_Character) is
+      Buffer : constant String := Read (Stream);
+   begin
+      Data.Is_Valid := Buffer (Buffer'First) = Data.Value;
+   end;
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Constant_Character) is
+   begin
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      Character'Write (Stream, Data.Value);
+   end;
+
+   --  ##########################
+   --  #  NMEA_Boolean
+   --  ##########################
+
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Boolean) is
+      Buffer : constant String := Read (Stream);
+   begin
+      Data.Is_Valid := Buffer (Buffer'First) = Data.True or else Buffer (Buffer'First) = Data.False;
+      Data.Value := Buffer (Buffer'First) = Data.True;
+   end;
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Boolean) is
+   begin
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      Character'Write (Stream, (if Data.Value then Data.True else Data.False));
+   end;
+
+
+   --  ##########################
+   --  #  NMEA_Hex_Value
+   --  ##########################
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Hex_Value) is
+      Buffer : constant String := Read (Stream) with Warnings => Off;
+
+   begin
+      pragma Compile_Time_Warning (True, "TODO Fix Read NMEA_Hex_Value");
+      Data.Is_Valid := False;
+   end;
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Hex_Value) is
+
+   begin
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      --  Write (Stream, NMEA_Integer  (Data));
+      pragma Compile_Time_Warning (True, "TODO Fix Write NMEA_Hex_Value");
+   end;
+
+
+   --  ##########################
+   --  #  NMEA_Waypoints
+   --  ##########################
+
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Waypoints) is
+   begin
+      null;
+   end;
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Waypoints) is
+   begin
+      null;
+   end;
+
+   overriding
+   procedure Finalize (Data : in out NMEA_Waypoints) is
+   begin
+      null;
+   end;
+
+   overriding
+   procedure Adjust (Data : in out NMEA_Waypoints) is
+   begin
+      null;
+   end;
+
 
 end NMEA.Messages;
