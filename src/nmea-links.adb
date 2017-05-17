@@ -6,7 +6,8 @@ package body NMEA.Links is
    ----------
    -- read --
    ----------
-   START_OF_MESSAGE : constant Stream_Element := Character'Pos ('$');
+   START_OF_MESSAGE_1 : constant Stream_Element := Character'Pos ('$');
+   START_OF_MESSAGE_2 : constant Stream_Element := Character'Pos ('!');
    END_OF_MESSAGE   : constant Stream_Element := Character'Pos ('*');
    procedure Read
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
@@ -18,7 +19,8 @@ package body NMEA.Links is
       Data.Cursor := Data.Data'First;
       loop
          Stream_Element'Read (Stream, Data.Data (Data.Cursor));
-         exit when Data.Data (Data.Cursor) = START_OF_MESSAGE;
+         exit when Data.Data (Data.Cursor) = START_OF_MESSAGE_1;
+         exit when Data.Data (Data.Cursor) = START_OF_MESSAGE_2;
       end loop;
       Data.Cursor := Data.Cursor + 1;
       Data.Time := Ada.Calendar.Clock;

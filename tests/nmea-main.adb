@@ -15,42 +15,51 @@ with NMEA.Messages.HDG; pragma Unreferenced (NMEA.Messages.HDG);
 with NMEA.Messages.RME; pragma Unreferenced (NMEA.Messages.RME);
 with NMEA.Messages.RMZ; pragma Unreferenced (NMEA.Messages.RMZ);
 with NMEA.Messages.RMM; pragma Unreferenced (NMEA.Messages.RMM);
+with NMEA.Messages.VDM; pragma Unreferenced (NMEA.Messages.VDM);
 
 
 with Ada.Exceptions;
 with GNAT.Traceback.Symbolic;
 
 procedure NMEA.Main is
-   use Ada.Text_IO;
+   procedure Test (Path : String);
+   procedure Test (Path : String) is
+      use Ada.Text_IO;
 
-   In_File      : Ada.Text_IO.File_Type;
-   Buffer       : NMEA.Links.Nmea_Frame;
-   Out_File     : Ada.Text_IO.File_Type;
-
-begin
-   Open   (In_File, Ada.Text_IO.In_File,   "data/NMEA.data");
-   Create (Out_File, Ada.Text_IO.Out_File, "data/NMEA.data.out");
+      In_File      : Ada.Text_IO.File_Type;
+      Buffer       : NMEA.Links.Nmea_Frame;
+      Out_File     : Ada.Text_IO.File_Type;
 
    begin
-      while not End_Of_File (In_File) loop
-         NMEA.Links.Nmea_Frame'Read (Text_Streams.Stream (In_File), Buffer);
-         Put_Line ("------------------------------------------------------------------------------------------------");
-         Put_Line (Buffer.Image);
-         declare
-            Msg : constant NMEA.Messages.Message'Class := NMEA.Messages.Message'Class'Input (Buffer.Stream);
-         begin
-            Put ("              ");
-            NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Ada.Text_IO.Standard_Output), Msg);
-            NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Out_File), Msg);
-         end;
-      end loop;
-   end;
-   Close (In_File);
-   Close (Out_File);
-exception
-   when E : others =>
+      Put_Line ("-- Reading : " & Path);
+      Open   (In_File, Ada.Text_IO.In_File,   Path);
+      Create (Out_File, Ada.Text_IO.Out_File, Path & ".out");
+
+      begin
+         while not End_Of_File (In_File) loop
+            NMEA.Links.Nmea_Frame'Read (Text_Streams.Stream (In_File), Buffer);
+            Put_Line ("------------------------------------------------------------------------------------------------");
+            Put_Line (Buffer.Image);
+            declare
+               Msg : constant NMEA.Messages.Message'Class := NMEA.Messages.Message'Class'Input (Buffer.Stream);
+            begin
+               Put ("              ");
+               NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Ada.Text_IO.Standard_Output), Msg);
+               NMEA.Messages.Message'Class'Output (Ada.Text_IO.Text_Streams.Stream (Out_File), Msg);
+            end;
+         end loop;
+      end;
       Close (In_File);
       Close (Out_File);
-      Put_Line (Ada.Exceptions.Exception_Information (E) &
-                  GNAT.Traceback.Symbolic.Symbolic_Traceback (E));
+
+   exception
+      when E : others =>
+         Close (In_File);
+         Close (Out_File);
+         Put_Line (Ada.Exceptions.Exception_Information (E) &
+                     GNAT.Traceback.Symbolic.Symbolic_Traceback (E));
+   end;
+begin
+   Test ("data/NMEA.data");
+   Test ("data/nmea-sample");
 end NMEA.Main;
