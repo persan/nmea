@@ -15,7 +15,8 @@ with System;
 
 package body NMEA.Messages is
    use Ada.Tags;
-   use  Ada.Strings.Fixed;
+   use Ada.Strings.Fixed;
+   use GNAT.Strings;
    function "<" (L, R : Ada.Tags.Tag) return Boolean;
 
    Witespace_Set : constant Character_Set := To_Set (' ' & ASCII.HT & ASCII.VT & ASCII.LF & ASCII.CR);
@@ -491,7 +492,11 @@ package body NMEA.Messages is
    overriding
    procedure Adjust (Data : in out NMEA_String) is
    begin
-      Data.Value := new String'(Data.Value.all);
+      Data.Value := (if Data.Value = null
+                     then
+                        null
+                     else
+                        new String'(Data.Value.all));
    end;
 
 
