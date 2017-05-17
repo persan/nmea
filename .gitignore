@@ -1,8 +1,8 @@
 lib
-.obj
+**/.obj
 bin/*
-*.db
-gmon.out
-gprof
-NMEA.data.out
-*.pyc
+**/*.db
+**/gprof
+**/*.out
+**/*.pyc
+xml/*
