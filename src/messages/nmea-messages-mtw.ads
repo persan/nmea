@@ -10,7 +10,8 @@
 
 package NMEA.Messages.MTW is
    type MTW_Message is new Message with record
-     null;
+      Degrees : NMEA_Dummy_Field;
+      Unit_of_Measurement_Celcius : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : MTW_Message) return String;

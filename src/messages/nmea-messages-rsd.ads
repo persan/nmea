@@ -22,7 +22,19 @@
 
 package NMEA.Messages.RSD is
    type RSD_Message is new Message with record
-     null;
+      Unknown : NMEA_Dummy_Field;
+      Unknown8 : NMEA_Dummy_Field;
+      Unknown9 : NMEA_Dummy_Field;
+      Unknown10 : NMEA_Dummy_Field;
+      Unknown11 : NMEA_Dummy_Field;
+      Unknown12 : NMEA_Dummy_Field;
+      Unknown13 : NMEA_Dummy_Field;
+      Unknown14 : NMEA_Dummy_Field;
+      Cursor_Range_From_Own_Ship : NMEA_Dummy_Field;
+      Cursor_Bearing_Degrees_Clockwise_From_Zero : NMEA_Dummy_Field;
+      Range_Scale : NMEA_Dummy_Field;
+      Range_Units : NMEA_Dummy_Field;
+      Unknown19 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : RSD_Message) return String;

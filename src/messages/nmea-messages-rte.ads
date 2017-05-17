@@ -12,7 +12,9 @@
 
 package NMEA.Messages.RTE is
    type RTE_Message is new Message with record
-     null;
+      Total_number_of_messages_being_transmitted : NMEA_Dummy_Field;
+      Message_Number : NMEA_Dummy_Field;
+      Waypoint_ID : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : RTE_Message) return String;

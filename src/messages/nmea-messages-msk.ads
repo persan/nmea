@@ -12,7 +12,11 @@
 
 package NMEA.Messages.MSK is
    type MSK_Message is new Message with record
-     null;
+      Frequency_to_use : NMEA_Dummy_Field;
+      Frequency_mode_A_auto_M_manual : NMEA_Dummy_Field;
+      Beacon_bit_rate : NMEA_Dummy_Field;
+      Bitrate_A_auto_M_manual : NMEA_Dummy_Field;
+      Frequency_for_MSS_message_status_null_for_no_status : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : MSK_Message) return String;

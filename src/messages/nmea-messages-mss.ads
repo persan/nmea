@@ -12,7 +12,11 @@
 
 package NMEA.Messages.MSS is
    type MSS_Message is new Message with record
-     null;
+      Signal_strength_dB_1uV : NMEA_Dummy_Field;
+      Signal_to_noise_ratio_dB : NMEA_Dummy_Field;
+      Beacon_frequency_kHz : NMEA_Dummy_Field;
+      Beacon_data_rate_BPS : NMEA_Dummy_Field;
+      Unknown_integer_value : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : MSS_Message) return String;

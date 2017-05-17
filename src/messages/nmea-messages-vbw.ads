@@ -3,17 +3,22 @@
 --          |   |   | |   |   | |
 --   $--VBW,x.x,x.x,A,x.x,x.x,A*hh<CR><LF>
 --  Field Number:
---  1. Longitudinal water speed, "-" means astern 
---  2. Transverse water speed, "-" means port 
---  3. Status, A = Data Valid 
---  4. Longitudinal ground speed, "-" means astern 
---  5. Transverse ground speed, "-" means port 
---  6. Status, A = Data Valid 
---  7. Checksum 
+--  1. Longitudinal water speed, "-" means astern
+--  2. Transverse water speed, "-" means port
+--  3. Status, A = Data Valid
+--  4. Longitudinal ground speed, "-" means astern
+--  5. Transverse ground speed, "-" means port
+--  6. Status, A = Data Valid
+--  7. Checksum
 
 package NMEA.Messages.VBW is
    type VBW_Message is new Message with record
-     null;
+      Longitudinal_Water_Speed       : NMEA_Dummy_Field;
+      Transverse_Water_Speed         : NMEA_Dummy_Field;
+      Transverse_Water_Speed_Status  : NMEA_Dummy_Field;
+      Longitudinal_Ground_Speed      : NMEA_Dummy_Field;
+      Transverse_Ground_Speed        : NMEA_Dummy_Field;
+      Transverse_Ground_Speed_Status : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : VBW_Message) return String;

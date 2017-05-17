@@ -11,7 +11,10 @@
 
 package NMEA.Messages.SFI is
    type SFI_Message is new Message with record
-     null;
+      Total_Number_Of_Messages : NMEA_Dummy_Field;
+      Message_Number : NMEA_Dummy_Field;
+      Frequency_1 : NMEA_Dummy_Field;
+      Mode_1 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : SFI_Message) return String;

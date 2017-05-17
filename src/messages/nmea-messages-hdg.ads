@@ -12,7 +12,11 @@
 
 package NMEA.Messages.HDG is
    type HDG_Message is new Message with record
-     null;
+      Magnetic_Sensor_heading_in_degrees : NMEA_Dummy_Field;
+      Magnetic_Deviation_degrees : NMEA_Dummy_Field;
+      Magnetic_Deviation_direction_E_Easterly_W_Westerly : NMEA_Dummy_Field;
+      Magnetic_Variation_degrees : NMEA_Dummy_Field;
+      Magnetic_Variation_direction_E_Easterly_W_Westerly : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : HDG_Message) return String;

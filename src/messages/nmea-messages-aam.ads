@@ -17,7 +17,11 @@ package NMEA.Messages.AAM is
 
 
    type AAM_Message is new Message with record
-      null;
+      Arrival_Circle_Entered           : NMEA_Boolean ('V', 'A');
+      Perpendicular_Passed_At_Waypoint : NMEA_Boolean ('V', 'A');
+      Arrival_Circle_Radius            : NMEA_Long_Float;
+      Units_Of_Radius                  : NMEA_Constant_Character ('N');
+      Waypoint_ID                      : NMEA_Waypoint_ID;
    end record;
 
    overriding function Image (This : AAM_Message) return String;

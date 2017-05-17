@@ -11,7 +11,10 @@
 
 package NMEA.Messages.RSA is
    type RSA_Message is new Message with record
-     null;
+      Starboard_or_single_rudder_sensor_means_Turn_To_Port : NMEA_Dummy_Field;
+      Status_A_means_data_is_valid : NMEA_Dummy_Field;
+      Port_rudder_sensor : NMEA_Dummy_Field;
+      Status_A_means_data_is_valid8 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : RSA_Message) return String;

@@ -3,14 +3,16 @@
 --          |   | |    |
 --   $--WCV,x.x,N,c--c*hh<CR><LF>
 --  Field Number:
---  1. Velocity 
---  2. N = knots 
---  3. Waypoint ID 
---  4. Checksum 
+--  1. Velocity
+--  2. N = knots
+--  3. Waypoint ID
+--  4. Checksum
 
 package NMEA.Messages.WCV is
    type WCV_Message is new Message with record
-     null;
+      Velocity    : NMEA_Dummy_Field;
+      N_Knots     : NMEA_Dummy_Field;
+      Waypoint_ID : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : WCV_Message) return String;

@@ -15,7 +15,11 @@
 
 package NMEA.Messages.GLL is
    type GLL_Message is new Message with record
-     null;
+      Latitude  : Latitude_Type;
+      Longitude : Longitude_Type;
+      Time      : UTC_Time_Type;
+      Status    : NMEA_Status_Type;
+      FAA_Mode  : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : GLL_Message) return String;

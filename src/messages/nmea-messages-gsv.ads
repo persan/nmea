@@ -20,7 +20,13 @@
 
 package NMEA.Messages.GSV is
    type GSV_Message is new Message with record
-     null;
+      total_number_of_GSV_messages_to_be_transmitted_in_this_group : NMEA_Dummy_Field;
+      origin_number_of_this_GSV_message_within_current_group : NMEA_Dummy_Field;
+      total_number_of_satellites_in_view_leading_zeros_sent : NMEA_Dummy_Field;
+      satellite_PRN_number_leading_zeros_sent : NMEA_Dummy_Field;
+      elevation_in_degrees_00_90_leading_zeros_sent : NMEA_Dummy_Field;
+      azimuth_in_degrees_to_true_north_000_359_leading_zeros_sent : NMEA_Dummy_Field;
+      SNR_in_dB_00_99_leading_zeros_sent_more_satellite_info_quadruples_like_4_7 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : GSV_Message) return String;

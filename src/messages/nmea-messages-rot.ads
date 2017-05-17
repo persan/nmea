@@ -9,7 +9,8 @@
 
 package NMEA.Messages.ROT is
    type ROT_Message is new Message with record
-     null;
+      Rate_Of_Turn_degrees_per_minute_means_bow_turns_to_port : NMEA_Dummy_Field;
+      Status_A_means_data_is_valid : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : ROT_Message) return String;

@@ -9,7 +9,7 @@
 
 package NMEA.Messages.STN is
    type STN_Message is new Message with record
-     null;
+      Talker_ID_Number : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : STN_Message) return String;

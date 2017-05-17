@@ -10,7 +10,8 @@
 
 package NMEA.Messages.HDT is
    type HDT_Message is new Message with record
-     null;
+      Heading_Degrees_true : NMEA_Dummy_Field;
+      T_True : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : HDT_Message) return String;

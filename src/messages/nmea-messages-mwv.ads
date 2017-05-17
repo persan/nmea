@@ -12,7 +12,11 @@
 
 package NMEA.Messages.MWV is
    type MWV_Message is new Message with record
-     null;
+      Wind_Angle_0_to_360_degrees : NMEA_Dummy_Field;
+      Reference_R_Relative_T_True : NMEA_Dummy_Field;
+      Wind_Speed : NMEA_Dummy_Field;
+      Wind_Speed_Units_K_M_N : NMEA_Dummy_Field;
+      Status_A_Data_Valid : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : MWV_Message) return String;

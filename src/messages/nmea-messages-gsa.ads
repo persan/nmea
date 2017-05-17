@@ -25,7 +25,23 @@
 
 package NMEA.Messages.GSA is
    type GSA_Message is new Message with record
-      null;
+      Selection_Mode                    : NMEA_Dummy_Field;
+      Mode                              : NMEA_Dummy_Field;
+      ID_Of_1st_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_2nd_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_3rd_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_4th_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_5th_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_6th_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_7th_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_8th_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_9th_Satellite_Used_For_Fix  : NMEA_Dummy_Field;
+      ID_Of_10th_Satellite_Used_For_Fix : NMEA_Dummy_Field;
+      ID_Of_11th_Satellite_Used_For_Fix : NMEA_Dummy_Field;
+      ID_Of_12th_Satellite_Used_For_Fix : NMEA_Dummy_Field;
+      PDOP                              : NMEA_Dummy_Field;
+      HDOP                              : NMEA_Dummy_Field;
+      VDOP                              : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : GSA_Message) return String;
@@ -34,5 +50,5 @@ private
    overriding
    function Constructor
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class)
-  return GSA_Message;
+      return GSA_Message;
 end NMEA.Messages.GSA;

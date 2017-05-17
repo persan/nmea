@@ -21,7 +21,16 @@
 
 package NMEA.Messages.TRF is
    type TRF_Message is new Message with record
-      null;
+      Time                        : UTC_Time_Type;
+      Date                        : UTC_Date_Type;
+      Latitude                    : Latitude_Type;
+      Longitude                   : Longitude_Type;
+      Elevation_Angle             : NMEA_Long_Float;
+      Number_Of_Iterations        : NMEA_Integer;
+      Number_Of_Doppler_Intervals : NMEA_Integer;
+      Update_Distance             : NMEA_Long_Float;
+      Satellite_ID                : NMEA_String;
+      Data_Validity               : NMEA_Status;
    end record;
 
    overriding function Image (This : TRF_Message) return String;

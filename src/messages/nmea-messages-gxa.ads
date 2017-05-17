@@ -16,7 +16,13 @@
 
 package NMEA.Messages.GXA is
    type GXA_Message is new Message with record
-     null;
+      UTC_of_position_fix : NMEA_Dummy_Field;
+      Latitude : NMEA_Dummy_Field;
+      East_or_West : NMEA_Dummy_Field;
+      Longitude : NMEA_Dummy_Field;
+      North_or_South : NMEA_Dummy_Field;
+      Waypoint_ID : NMEA_Dummy_Field;
+      Satelite_number : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : GXA_Message) return String;

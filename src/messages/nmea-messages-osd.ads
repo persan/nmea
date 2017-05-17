@@ -16,7 +16,15 @@
 
 package NMEA.Messages.OSD is
    type OSD_Message is new Message with record
-     null;
+      Heading_degrees_true : NMEA_Dummy_Field;
+      Status_A_Data_Valid : NMEA_Dummy_Field;
+      Vessel_Course_degrees_True : NMEA_Dummy_Field;
+      Course_Reference : NMEA_Dummy_Field;
+      Vessel_Speed : NMEA_Dummy_Field;
+      Speed_Reference : NMEA_Dummy_Field;
+      Vessel_Set_degrees_True : NMEA_Dummy_Field;
+      Vessel_drift_speed : NMEA_Dummy_Field;
+      Speed_Units : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : OSD_Message) return String;

@@ -4,26 +4,38 @@
 --          |         |       | |        | |   | |   | |   | |    |   |
 --   $--BWC,hhmmss.ss,llll.ll,a,yyyyy.yy,a,x.x,T,x.x,M,x.x,N,c--c,m,*hh<CR><LF>
 --  Field Number:
---  1. UTCTime 
---  2. Waypoint Latitude 
---  3. N = North, S = South 
---  4. Waypoint Longitude 
---  5. E = East, W = West 
---  6. Bearing, True 
---  7. T = True 
---  8. Bearing, Magnetic 
---  9. M = Magnetic 
---  10. Nautical Miles 
---  11. N = Nautical Miles 
---  12. Waypoint ID 
---  13. FAA mode indicator (NMEA 2.3 and later, optional) 
---  14. Checksum 
+--  1. UTCTime
+--  2. Waypoint Latitude
+--  3. N = North, S = South
+--  4. Waypoint Longitude
+--  5. E = East, W = West
+--  6. Bearing, True
+--  7. T = True
+--  8. Bearing, Magnetic
+--  9. M = Magnetic
+--  10. Nautical Miles
+--  11. N = Nautical Miles
+--  12. Waypoint ID
+--  13. FAA mode indicator (NMEA 2.3 and later, optional)
+--  14. Checksum
 --  Example 1: $GPBWC,081837,,,,,,T,,M,,N,*13
 --  Example 2: GPBWC,220516,5130.02,N,00046.34,W,213.8,T,218.0,M,0004.6,N,EGLM*11
 
 package NMEA.Messages.BWC is
    type BWC_Message is new Message with record
-     null;
+      UTCTime            : NMEA_Dummy_Field;
+      Waypoint_Latitude  : NMEA_Dummy_Field;
+      N_North_S_South    : NMEA_Dummy_Field;
+      Waypoint_Longitude : NMEA_Dummy_Field;
+      E_East_W_West      : NMEA_Dummy_Field;
+      Bearing_True       : NMEA_Dummy_Field;
+      T_True             : NMEA_Dummy_Field;
+      Bearing_Magnetic   : NMEA_Dummy_Field;
+      M_Magnetic         : NMEA_Dummy_Field;
+      Nautical_Miles     : NMEA_Dummy_Field;
+      N_Nautical_Miles   : NMEA_Dummy_Field;
+      Waypoint_ID        : NMEA_Dummy_Field;
+      FAA_Mode_Indicator : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : BWC_Message) return String;

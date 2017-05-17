@@ -22,7 +22,19 @@
 
 package NMEA.Messages.GLC is
    type GLC_Message is new Message with record
-     null;
+      GRI_Microseconds_10 : NMEA_Dummy_Field;
+      Master_TOA_Microseconds : NMEA_Dummy_Field;
+      Master_TOA_Signal_Status : NMEA_Dummy_Field;
+      Time_Difference_1_Microseconds : NMEA_Dummy_Field;
+      Time_Difference_1_Signal_Status : NMEA_Dummy_Field;
+      Time_Difference_2_Microseconds : NMEA_Dummy_Field;
+      Time_Difference_2_Signal_Status : NMEA_Dummy_Field;
+      Time_Difference_3_Microseconds : NMEA_Dummy_Field;
+      Time_Difference_3_Signal_Status : NMEA_Dummy_Field;
+      Time_Difference_4_Microseconds : NMEA_Dummy_Field;
+      Time_Difference_4_Signal_Status : NMEA_Dummy_Field;
+      Time_Difference_5_Microseconds : NMEA_Dummy_Field;
+      Time_Difference_5_Signal_Status : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : GLC_Message) return String;

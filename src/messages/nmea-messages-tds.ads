@@ -10,7 +10,8 @@
 
 package NMEA.Messages.TDS is
    type TDS_Message is new Message with record
-     null;
+      Distance_between_trawl_doors : NMEA_Dummy_Field;
+      Meters_0_300 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : TDS_Message) return String;

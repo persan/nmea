@@ -12,7 +12,9 @@
 
 package NMEA.Messages.TFI is
    type TFI_Message is new Message with record
-     null;
+      Catch_sensor_1 : NMEA_Dummy_Field;
+      Catch_sensor_2 : NMEA_Dummy_Field;
+      Catch_sensor_3 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : TFI_Message) return String;

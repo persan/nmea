@@ -12,7 +12,11 @@
 
 package NMEA.Messages.GTD is
    type GTD_Message is new Message with record
-     null;
+      time_difference : NMEA_Dummy_Field;
+      time_difference6 : NMEA_Dummy_Field;
+      time_difference7 : NMEA_Dummy_Field;
+      time_difference8 : NMEA_Dummy_Field;
+      time_difference9 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : GTD_Message) return String;

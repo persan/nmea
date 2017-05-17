@@ -12,7 +12,11 @@
 
 package NMEA.Messages.RPM is
    type RPM_Message is new Message with record
-     null;
+      Sourse_S_Shaft_E_Engine : NMEA_Dummy_Field;
+      Engine_or_shaft_number : NMEA_Dummy_Field;
+      Speed_Revolutions_per_minute : NMEA_Dummy_Field;
+      Propeller_pitch_of_maximum_means_astern : NMEA_Dummy_Field;
+      Status_A_means_data_is_valid : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : RPM_Message) return String;

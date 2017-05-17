@@ -12,7 +12,10 @@
 
 package NMEA.Messages.HFB is
    type HFB_Message is new Message with record
-     null;
+      Distance_from_headrope_to_footrope : NMEA_Dummy_Field;
+      Meters_0_100 : NMEA_Dummy_Field;
+      Distance_from_headrope_to_bottom : NMEA_Dummy_Field;
+      Meters_0_1008 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : HFB_Message) return String;

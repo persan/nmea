@@ -26,7 +26,20 @@ package NMEA.Messages.APB is
 
 
    type APB_Message is new Message with record
-      null;
+      Blink_Or_SNR_Warning                      : NMEA_Dummy_Field;
+      Cycle_Lock_Warning                        : NMEA_Dummy_Field;
+      Cross_Track_Error_Magnitude               : NMEA_Dummy_Field;
+      Direction_To_Steer_L_Or_R                 : NMEA_Dummy_Field;
+      Cross_Track_Units_N_Nautical_Miles        : NMEA_Dummy_Field;
+      Status_A_Arrival_Circle_Entered           : NMEA_Dummy_Field;
+      Status_A_Perpendicular_Passed_At_Waypoint : NMEA_Dummy_Field;
+      Bearing_Origin_To_Destination             : NMEA_Dummy_Field;
+      M_Magnetic_T_True                         : NMEA_Dummy_Field;
+      Destination_Waypoint_ID                   : NMEA_Dummy_Field;
+      Bearing_Present_Position_To_Destination   : NMEA_Dummy_Field;
+      M_Magnetic_T_True18                       : NMEA_Dummy_Field;
+      Heading_To_Steer_To_Destination_Waypoint  : NMEA_Dummy_Field;
+      M_Magnetic_T_True20                       : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : APB_Message) return String;

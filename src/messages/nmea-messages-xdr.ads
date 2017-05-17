@@ -12,7 +12,10 @@
 
 package NMEA.Messages.XDR is
    type XDR_Message is new Message with record
-     null;
+      Transducer_Type      : NMEA_Dummy_Field;
+      Measurement_Data     : NMEA_Dummy_Field;
+      Units_Of_Measurement : NMEA_Dummy_Field;
+      Name_Of_Transducer   : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : XDR_Message) return String;

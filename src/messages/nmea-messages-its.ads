@@ -10,7 +10,8 @@
 
 package NMEA.Messages.ITS is
    type ITS_Message is new Message with record
-     null;
+      Second_spread_distance : NMEA_Dummy_Field;
+      Meters : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : ITS_Message) return String;

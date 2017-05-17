@@ -14,7 +14,12 @@
 
 package NMEA.Messages.BWW is
    type BWW_Message is new Message with record
-     null;
+      Bearing_Degrees_TRUE     : NMEA_Dummy_Field;
+      T_True                   : NMEA_Dummy_Field;
+      Bearing_Degrees_Magnetic : NMEA_Dummy_Field;
+      M_Magnetic               : NMEA_Dummy_Field;
+      TO_Waypoint              : NMEA_Dummy_Field;
+      FROM_Waypoint            : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : BWW_Message) return String;

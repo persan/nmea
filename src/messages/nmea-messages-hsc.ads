@@ -12,7 +12,10 @@
 
 package NMEA.Messages.HSC is
    type HSC_Message is new Message with record
-     null;
+      Heading_Degrees_True : NMEA_Dummy_Field;
+      T_True : NMEA_Dummy_Field;
+      Heading_Degrees_Magnetic : NMEA_Dummy_Field;
+      M_Magnetic : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : HSC_Message) return String;

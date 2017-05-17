@@ -10,7 +10,8 @@
 
 package NMEA.Messages.HDM is
    type HDM_Message is new Message with record
-     null;
+      Heading_Degrees_magnetic : NMEA_Dummy_Field;
+      M_magnetic : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : HDM_Message) return String;

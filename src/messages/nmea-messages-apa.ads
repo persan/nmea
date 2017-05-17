@@ -21,7 +21,16 @@ package NMEA.Messages.APA is
 
 
    type APA_Message is new Message with record
-      null;
+      Blink_Warning                    : NMEA_Boolean ('V', 'A');
+      Cycle_Lock_Warning               : NMEA_Boolean ('A', 'V');
+      Cross_Track_Error_Magnitude      : NMEA_Long_Float;
+      Steer_Left                       : NMEA_Boolean (False => 'R', True => 'L');
+      Cross_Track_Units_is_KM          : NMEA_Boolean ('N', 'K');
+      Arrival_Circle_Entered           : NMEA_Boolean ('V', 'A');
+      Perpendicular_Passed_At_Waypoint : NMEA_Boolean ('V', 'A');
+      Bearing_Origin_To_Destination    : NMEA_Integer;
+      Is_Magnetic                      : NMEA_Boolean ('T', 'M');
+      Destination_Waypoint_ID          : NMEA_String;
    end record;
 
    overriding function Image (This : APA_Message) return String;

@@ -11,7 +11,9 @@
 
 package NMEA.Messages.OLN is
    type OLN_Message is new Message with record
-     null;
+      Omega_Pair_1 : NMEA_Dummy_Field;
+      Omega_Pair_16 : NMEA_Dummy_Field;
+      Omega_Pair_17 : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : OLN_Message) return String;

@@ -3,14 +3,16 @@
 --          |         |         |    |
 --   $--ZFO,hhmmss.ss,hhmmss.ss,c--c*hh<CR><LF>
 --  Field Number:
---  1. Universal Time Coordinated (UTC) 
---  2. Elapsed Time 
---  3. Origin Waypoint ID 
---  4. Checksum 
+--  1. Universal Time Coordinated (UTC)
+--  2. Elapsed Time
+--  3. Origin Waypoint ID
+--  4. Checksum
 
 package NMEA.Messages.ZFO is
    type ZFO_Message is new Message with record
-     null;
+      Universal_Time_Coordinated_UTC : NMEA_Dummy_Field;
+      Elapsed_Time                   : NMEA_Dummy_Field;
+      Origin_Waypoint_ID             : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : ZFO_Message) return String;

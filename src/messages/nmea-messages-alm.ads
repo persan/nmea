@@ -27,7 +27,21 @@ package NMEA.Messages.ALM is
 
 
    type ALM_Message is new Message with record
-      null;
+      Total_Number_Of_Messages    : NMEA_Integer;
+      Message_Number              : NMEA_Integer;
+      Satellite_PRN_Number        : NMEA_Integer;
+      GPS_Week_Number             : NMEA_Integer;
+      SV_Health                   : NMEA_Hex_Value;
+      Eccentricity                : NMEA_Hex_Value;
+      Almanac_Reference_Time      : NMEA_Hex_Value;
+      Inclination_Angle           : NMEA_Hex_Value;
+      Rate_Of_Right_Ascension     : NMEA_Hex_Value;
+      Root_Of_Semi_Major_Axis     : NMEA_Hex_Value;
+      Argument_Of_Perigee         : NMEA_Hex_Value;
+      Longitude_Of_Ascension_Node : NMEA_Hex_Value;
+      Mean_Anomaly                : NMEA_Hex_Value;
+      F0_Clock_Parameter          : NMEA_Hex_Value;
+      F1_Clock_Parameter          : NMEA_Hex_Value;
    end record;
 
    overriding function Image (This : ALM_Message) return String;
@@ -36,5 +50,5 @@ private
    overriding
    function Constructor
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class)
-      return ALM_Message;
+  return ALM_Message;
 end NMEA.Messages.ALM;

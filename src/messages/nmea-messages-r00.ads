@@ -9,7 +9,7 @@
 
 package NMEA.Messages.R00 is
    type R00_Message is new Message with record
-     null;
+      waypoint_ID : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : R00_Message) return String;

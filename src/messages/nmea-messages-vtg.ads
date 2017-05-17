@@ -29,7 +29,15 @@
 
 package NMEA.Messages.VTG is
    type VTG_Message is new Message with record
-     null;
+      Track_Degrees                         : NMEA_Dummy_Field;
+      T_True                                : NMEA_Dummy_Field;
+      Track_Degrees8                        : NMEA_Dummy_Field;
+      M_Magnetic                            : NMEA_Dummy_Field;
+      Speed_Knots                           : NMEA_Dummy_Field;
+      N_Knots                               : NMEA_Dummy_Field;
+      Speed_Kilometers_Per_Hour             : NMEA_Dummy_Field;
+      K_Kilometers_Per_Hour                 : NMEA_Dummy_Field;
+      FAA_Mode_Indicator_NMEA_2_3_And_Later : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : VTG_Message) return String;

@@ -3,17 +3,22 @@
 --          |   | |   | |    |    |
 --   $--WNC,x.x,N,x.x,K,c--c,c--c*hh<CR><LF>
 --  Field Number:
---  1. Distance, Nautical Miles 
---  2. N = Nautical Miles 
---  3. Distance, Kilometers 
---  4. K = Kilometers 
---  5. TO Waypoint 
---  6. FROM Waypoint 
---  7. Checksum 
+--  1. Distance, Nautical Miles
+--  2. N = Nautical Miles
+--  3. Distance, Kilometers
+--  4. K = Kilometers
+--  5. TO Waypoint
+--  6. FROM Waypoint
+--  7. Checksum
 
 package NMEA.Messages.WNC is
    type WNC_Message is new Message with record
-     null;
+      Distance_Nautical_Miles : NMEA_Dummy_Field;
+      N_Nautical_Miles        : NMEA_Dummy_Field;
+      Distance_Kilometers     : NMEA_Dummy_Field;
+      K_Kilometers            : NMEA_Dummy_Field;
+      TO_Waypoint             : NMEA_Dummy_Field;
+      FROM_Waypoint           : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : WNC_Message) return String;

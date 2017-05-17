@@ -12,7 +12,10 @@
 
 package NMEA.Messages.FSI is
    type FSI_Message is new Message with record
-     null;
+      Transmitting_Frequency : NMEA_Dummy_Field;
+      Receiving_Frequency    : NMEA_Dummy_Field;
+      Communications_Mode    : NMEA_Dummy_Field;
+      Power_Level            : NMEA_Dummy_Field;
    end record;
 
    overriding function Image (This : FSI_Message) return String;
