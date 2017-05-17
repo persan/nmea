@@ -1,0 +1,15 @@
+with "nmea.gpr";
+with "gnatcoll.gpr";
+project NMEA.JSON is
+
+   for Languages use ("Ada");
+   for Source_Dirs use ("json");
+   for Object_Dir use ".obj/" & project'Name ;
+   for Exec_Dir use "bin";
+
+
+   package Compiler renames NMEA.Compiler;
+   package Binder renames NMEA.Binder;
+   package Naming renames NMEA.Naming;
+
+end NMEA.JSON;

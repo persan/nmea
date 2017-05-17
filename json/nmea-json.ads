@@ -1,0 +1,6 @@
+with GNATCOLL.JSON;
+
+package NMEA.JSON is
+   use GNATCOLL.JSON;
+
+end NMEA.JSON;
