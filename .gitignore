@@ -6,3 +6,8 @@ bin/*
 **/*.out
 **/*.pyc
 xml/*
+**/*.orig
+**/*BACKUP*
+**/*BASE*
+**/*LOCAL*
+**/*REMOTE*
