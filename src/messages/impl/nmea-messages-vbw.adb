@@ -19,5 +19,5 @@ package body NMEA.Messages.VBW is
    overriding function Image (This : VBW_Message) return String is separate;
 
 begin
-   Register ("Vbw", VBW_Message'Tag);
+   Register ("VBW", VBW_Message'Tag);
 end NMEA.Messages.VBW;
