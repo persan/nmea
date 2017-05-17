@@ -26,6 +26,6 @@ library project NMEA is
       for Implementation_Suffix ("Python") use ".py";
       for Implementation_Suffix ("Makefile") use ".mk";
       for Implementation_Exceptions ("Makefile") use ("Makefile");
-      for Spec_Suffix ("Project File") use ".gpr";
+--        for Implementation_Suffix ("Project File") use ".gpr";
    end Naming;
 end NMEA;

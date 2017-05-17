@@ -1,4 +1,5 @@
 with "nmea.gpr";
+with "nmea-json.gpr";
 project NMEA.Tests is
 
    for Languages use ("Ada", "Python", "Project File", "Makefile");
