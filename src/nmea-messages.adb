@@ -101,7 +101,7 @@ package body NMEA.Messages is
    end;
 
    function Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class) return String is
-      Ret    : String (1 .. 64);
+      Ret    : String (1 .. 255);
       Cursor : Natural := Ret'First;
    begin
       loop
@@ -518,6 +518,28 @@ package body NMEA.Messages is
       NMEA_Field'Write (Stream, NMEA_Field (Data));
       Character'Write (Stream, Data.Value);
    end;
+
+   --  ##########################
+   --  #  NMEA_Character
+   --  ##########################
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Character) is
+      Buffer : constant String := Read (Stream);
+   begin
+
+      Data.Value := (if Buffer'Length > 0 then Buffer (Buffer'First) else ' ');
+      Data.Is_Valid := Buffer'Length > 0;
+   end;
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Character) is
+   begin
+      NMEA_Field'Write (Stream, NMEA_Field (Data));
+      Character'Write (Stream, Data.Value);
+   end;
+
 
    --  ##########################
    --  #  NMEA_Boolean
