@@ -15,12 +15,12 @@
 
 package NMEA.Messages.ZDA is
    type ZDA_Message is new Message with record
-      Time                                                          : UTC_Time_Type;
-      Day_01_To_31                                                  : NMEA_Dummy_Field;
-      Month_01_To_12                                                : NMEA_Dummy_Field;
-      Year_4_Digits                                                 : NMEA_Dummy_Field;
-      Local_Zone_Description_00_To_13_Hours                         : NMEA_Dummy_Field;
-      Local_Zone_Minutes_Description_Apply_Same_Sign_As_Local_Hours : NMEA_Dummy_Field;
+      Time                           : UTC_Time_Type;
+      Day_01_To_31                   : NMEA_Day_Number;
+      Month_01_To_12                 : NMEA_Month_Number;
+      Year_4_Digits                  : NMEA_Year_Number;
+      Local_Zone_Description         : NMEA_Zone_Description_Hours;
+      Local_Zone_Minutes_Description : NMEA_Zone_Description_Minutes;
    end record;
 
    overriding function Image (This : ZDA_Message) return String;

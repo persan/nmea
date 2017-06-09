@@ -14,29 +14,17 @@
 --  8. K = Kilometers Per Hour
 --  9. FAA mode indicator (NMEA 2.3 and later)
 --  10. Checksum
---  Note: in some older versions of NMEA 0183, the sentence looks like this:
---           1  2  3   4  5
---           |  |  |   |  |
---   $--VTG,x.x,x,x.x,x.x,*hh<CR><LF>
---!  !Field Number
---!  !1. True course over ground (degrees) 000 to 359
---!  !2. Magnetic course over ground 000 to 359
---!  !3. Speed over ground (knots) 00.0 to 99.9
---!  !4. Speed over ground (kilometers) 00.0 to 99.9
---!  !5. Checksum
---  The two forms can be distinguished by field 2, which will be the fixed text T in the newer form. The new form appears to have been introduced with NMEA 3.01 in 2002.
---  Some devices, such as those described in [GLOBALSAT], leave the magnetic-bearing fields 3 and 4 empty.
 
 package NMEA.Messages.VTG is
    type VTG_Message is new Message with record
       Track_Degrees                         : NMEA_Dummy_Field;
-      T_True                                : NMEA_Dummy_Field;
+      T_True                                : NMEA_Constant_Character ('T');
       Track_Degrees8                        : NMEA_Dummy_Field;
-      M_Magnetic                            : NMEA_Dummy_Field;
+      M_Magnetic                            : NMEA_Constant_Character ('M');
       Speed_Knots                           : NMEA_Dummy_Field;
-      N_Knots                               : NMEA_Dummy_Field;
+      N_Knots                               : NMEA_Constant_Character ('N');
       Speed_Kilometers_Per_Hour             : NMEA_Dummy_Field;
-      K_Kilometers_Per_Hour                 : NMEA_Dummy_Field;
+      K_Kilometers_Per_Hour                 : NMEA_Constant_Character ('K');
       FAA_Mode_Indicator_NMEA_2_3_And_Later : NMEA_Dummy_Field;
    end record;
 

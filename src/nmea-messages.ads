@@ -108,6 +108,13 @@ package NMEA.Messages is
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                                Data   : in NMEA_Integer);
 
+
+   type NMEA_Day_Number is new NMEA_Integer with null record;
+   type NMEA_Month_Number is new NMEA_Integer with null record;
+   type NMEA_Year_Number is new NMEA_Integer with null record;
+   type NMEA_Zone_Description_Hours is new NMEA_Integer with null record;
+   type NMEA_Zone_Description_Minutes is new NMEA_Integer with null record;
+
    type NMEA_String is new NMEA_Field with record
       Value : GNAT.Strings.String_Access;
    end record with
