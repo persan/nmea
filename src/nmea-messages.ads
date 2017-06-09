@@ -253,6 +253,18 @@ package NMEA.Messages is
    procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
                     Data   : in NMEA_Constant_Character);
 
+   type  NMEA_Character is new NMEA_Field with record
+      Value : Character;
+   end record with
+     Read => Read,
+     Write => Write;
+   overriding
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out NMEA_Character);
+
+   overriding
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in NMEA_Character);
 
    type  NMEA_Boolean (False, True : Character) is new NMEA_Field with record
       Value : Boolean;
