@@ -2,20 +2,21 @@ with Ada.Text_IO.Text_Streams;
 with NMEA.Links;
 with NMEA.Messages;
 
-with NMEA.Messages.GGA; pragma Unreferenced (NMEA.Messages.GGA);
 with NMEA.Messages.BOD; pragma Unreferenced (NMEA.Messages.BOD);
-pragma Unreferenced (NMEA.Messages.GGA);
-with NMEA.Messages.GLL; pragma Unreferenced (NMEA.Messages.GLL);
+with NMEA.Messages.GGA; pragma Unreferenced (NMEA.Messages.GGA); -- @GPS3
+with NMEA.Messages.GLL; pragma Unreferenced (NMEA.Messages.GLL); -- @GPS3
 with NMEA.Messages.GSA; pragma Unreferenced (NMEA.Messages.GSA);
 with NMEA.Messages.GSV; pragma Unreferenced (NMEA.Messages.GSV);
-with NMEA.Messages.RMB; pragma Unreferenced (NMEA.Messages.RMB);
-with NMEA.Messages.RMC; pragma Unreferenced (NMEA.Messages.RMC);
-with NMEA.Messages.RTE; pragma Unreferenced (NMEA.Messages.RTE);
 with NMEA.Messages.HDG; pragma Unreferenced (NMEA.Messages.HDG);
+with NMEA.Messages.RMB; pragma Unreferenced (NMEA.Messages.RMB);
+with NMEA.Messages.RMC; pragma Unreferenced (NMEA.Messages.RMC); -- @GPS3
 with NMEA.Messages.RME; pragma Unreferenced (NMEA.Messages.RME);
-with NMEA.Messages.RMZ; pragma Unreferenced (NMEA.Messages.RMZ);
 with NMEA.Messages.RMM; pragma Unreferenced (NMEA.Messages.RMM);
+with NMEA.Messages.RMZ; pragma Unreferenced (NMEA.Messages.RMZ);
+with NMEA.Messages.RTE; pragma Unreferenced (NMEA.Messages.RTE);
 with NMEA.Messages.VDM; pragma Unreferenced (NMEA.Messages.VDM);
+with NMEA.Messages.VTG; pragma Unreferenced (NMEA.Messages.VTG); -- @GPS3
+with NMEA.Messages.ZDA; pragma Unreferenced (NMEA.Messages.ZDA); -- @GPS3
 
 
 with Ada.Exceptions;
