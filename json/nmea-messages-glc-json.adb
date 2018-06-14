@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.GLC.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  GLC_Message
@@ -69,7 +69,7 @@ package body NMEA.Messages.GLC.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : GLC_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -105,11 +105,11 @@ package body NMEA.Messages.GLC.JSON is
          To.Time_Difference_5_Microseconds := Get (Value);
       elsif Name = "Time_Difference_5_Signal_Status" then
          To.Time_Difference_5_Signal_Status := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.TDS.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  TDS_Message
@@ -58,7 +58,7 @@ package body NMEA.Messages.TDS.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : TDS_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -72,11 +72,11 @@ package body NMEA.Messages.TDS.JSON is
          To.Distance_between_trawl_doors := Get (Value);
       elsif Name = "Meters_0_300" then
          To.Meters_0_300 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

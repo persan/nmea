@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.SFI.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  SFI_Message
@@ -60,7 +60,7 @@ package body NMEA.Messages.SFI.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : SFI_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -78,11 +78,11 @@ package body NMEA.Messages.SFI.JSON is
          To.Frequency_1 := Get (Value);
       elsif Name = "Mode_1" then
          To.Mode_1 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

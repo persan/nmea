@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.HDM.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  HDM_Message
@@ -58,7 +58,7 @@ package body NMEA.Messages.HDM.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : HDM_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -72,11 +72,11 @@ package body NMEA.Messages.HDM.JSON is
          To.Heading_Degrees_magnetic := Get (Value);
       elsif Name = "M_magnetic" then
          To.M_magnetic := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.ALM.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  ALM_Message
@@ -71,7 +71,7 @@ package body NMEA.Messages.ALM.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : ALM_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -111,11 +111,11 @@ package body NMEA.Messages.ALM.JSON is
          To.F0_Clock_Parameter := Get (Value);
       elsif Name = "F1_Clock_Parameter" then
          To.F1_Clock_Parameter := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

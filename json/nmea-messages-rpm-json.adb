@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.RPM.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  RPM_Message
@@ -61,7 +61,7 @@ package body NMEA.Messages.RPM.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : RPM_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -81,11 +81,11 @@ package body NMEA.Messages.RPM.JSON is
          To.Propeller_pitch_of_maximum_means_astern := Get (Value);
       elsif Name = "Status_A_means_data_is_valid" then
          To.Status_A_means_data_is_valid := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

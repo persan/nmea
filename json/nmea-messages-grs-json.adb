@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.GRS.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  GRS_Message
@@ -70,7 +70,7 @@ package body NMEA.Messages.GRS.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : GRS_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -108,11 +108,11 @@ package body NMEA.Messages.GRS.JSON is
          To.Satellite_11_Residual := Get (Value);
       elsif Name = "Satellite_12_Residual" then
          To.Satellite_12_Residual := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

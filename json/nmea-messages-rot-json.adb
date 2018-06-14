@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.ROT.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  ROT_Message
@@ -58,7 +58,7 @@ package body NMEA.Messages.ROT.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : ROT_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -72,11 +72,11 @@ package body NMEA.Messages.ROT.JSON is
          To.Rate_Of_Turn_degrees_per_minute_means_bow_turns_to_port := Get (Value);
       elsif Name = "Status_A_means_data_is_valid" then
          To.Status_A_means_data_is_valid := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

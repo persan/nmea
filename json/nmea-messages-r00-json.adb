@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.R00.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  R00_Message
@@ -57,7 +57,7 @@ package body NMEA.Messages.R00.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : R00_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -69,11 +69,11 @@ package body NMEA.Messages.R00.JSON is
    begin
       if Name = "waypoint_ID" then
          To.waypoint_ID := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

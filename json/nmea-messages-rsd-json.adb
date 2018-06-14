@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.RSD.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  RSD_Message
@@ -69,7 +69,7 @@ package body NMEA.Messages.RSD.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : RSD_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -105,11 +105,11 @@ package body NMEA.Messages.RSD.JSON is
          To.Range_Units := Get (Value);
       elsif Name = "Unknown19" then
          To.Unknown19 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
