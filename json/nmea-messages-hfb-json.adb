@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.HFB.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  HFB_Message
@@ -60,7 +60,7 @@ package body NMEA.Messages.HFB.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : HFB_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -78,11 +78,11 @@ package body NMEA.Messages.HFB.JSON is
          To.Distance_from_headrope_to_bottom := Get (Value);
       elsif Name = "Meters_0_1008" then
          To.Meters_0_1008 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.BWR.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  BWR_Message
@@ -68,7 +68,7 @@ package body NMEA.Messages.BWR.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : BWR_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -102,11 +102,11 @@ package body NMEA.Messages.BWR.JSON is
          To.N_Nautical_Miles := Get (Value);
       elsif Name = "Waypoint_ID" then
          To.Waypoint_ID := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.APA.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  APA_Message
@@ -66,7 +66,7 @@ package body NMEA.Messages.APA.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : APA_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -96,11 +96,11 @@ package body NMEA.Messages.APA.JSON is
          To.Is_Magnetic := Get (Value);
       elsif Name = "Destination_Waypoint_ID" then
          To.Destination_Waypoint_ID := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

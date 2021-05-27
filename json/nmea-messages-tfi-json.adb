@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.TFI.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  TFI_Message
@@ -59,7 +59,7 @@ package body NMEA.Messages.TFI.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : TFI_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -75,11 +75,11 @@ package body NMEA.Messages.TFI.JSON is
          To.Catch_sensor_2 := Get (Value);
       elsif Name = "Catch_sensor_3" then
          To.Catch_sensor_3 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

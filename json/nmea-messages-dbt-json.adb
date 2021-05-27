@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.DBT.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  DBT_Message
@@ -62,7 +62,7 @@ package body NMEA.Messages.DBT.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : DBT_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -84,11 +84,11 @@ package body NMEA.Messages.DBT.JSON is
          To.Depth_Fathoms := Get (Value);
       elsif Name = "F_Fathoms" then
          To.F_Fathoms := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

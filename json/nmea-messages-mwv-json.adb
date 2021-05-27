@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.MWV.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  MWV_Message
@@ -61,7 +61,7 @@ package body NMEA.Messages.MWV.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : MWV_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -81,11 +81,11 @@ package body NMEA.Messages.MWV.JSON is
          To.Wind_Speed_Units_K_M_N := Get (Value);
       elsif Name = "Status_A_Data_Valid" then
          To.Status_A_Data_Valid := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

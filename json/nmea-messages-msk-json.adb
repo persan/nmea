@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.MSK.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  MSK_Message
@@ -61,7 +61,7 @@ package body NMEA.Messages.MSK.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : MSK_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -81,11 +81,11 @@ package body NMEA.Messages.MSK.JSON is
          To.Bitrate_A_auto_M_manual := Get (Value);
       elsif Name = "Frequency_for_MSS_message_status_null_for_no_status" then
          To.Frequency_for_MSS_message_status_null_for_no_status := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

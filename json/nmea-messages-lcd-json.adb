@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.LCD.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  LCD_Message
@@ -24,6 +24,7 @@ package body NMEA.Messages.LCD.JSON is
       Set_Field (Target, "Time_Difference_4_Signal_Status", Create (Val.Time_Difference_4_Signal_Status));
       Set_Field (Target, "Time_Difference_5_Microseconds", Create (Val.Time_Difference_5_Microseconds));
       Set_Field (Target, "Time_Difference_5_Signal_Status", Create (Val.Time_Difference_5_Signal_Status));
+      Populate (Message (Val), Target);
    end;
 
    ------------
@@ -69,7 +70,7 @@ package body NMEA.Messages.LCD.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : LCD_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -105,11 +106,11 @@ package body NMEA.Messages.LCD.JSON is
          To.Time_Difference_5_Microseconds := Get (Value);
       elsif Name = "Time_Difference_5_Signal_Status" then
          To.Time_Difference_5_Signal_Status := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

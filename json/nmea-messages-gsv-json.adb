@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.GSV.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  GSV_Message
@@ -63,7 +63,7 @@ package body NMEA.Messages.GSV.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : GSV_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -87,11 +87,11 @@ package body NMEA.Messages.GSV.JSON is
          To.azimuth_in_degrees_to_true_north_000_359_leading_zeros_sent := Get (Value);
       elsif Name = "SNR_in_dB_00_99_leading_zeros_sent_more_satellite_info_quadruples_like_4_7" then
          To.SNR_in_dB_00_99_leading_zeros_sent_more_satellite_info_quadruples_like_4_7 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

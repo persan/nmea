@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.GNS.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  GNS_Message
@@ -68,7 +68,7 @@ package body NMEA.Messages.GNS.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : GNS_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -102,11 +102,11 @@ package body NMEA.Messages.GNS.JSON is
          To.Age_Of_Diferential_Data := Get (Value);
       elsif Name = "Differential_Reference_Station_ID" then
          To.Differential_Reference_Station_ID := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.BWC.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  BWC_Message
@@ -69,7 +69,7 @@ package body NMEA.Messages.BWC.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : BWC_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -105,11 +105,11 @@ package body NMEA.Messages.BWC.JSON is
          To.Waypoint_ID := Get (Value);
       elsif Name = "FAA_Mode_Indicator" then
          To.FAA_Mode_Indicator := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

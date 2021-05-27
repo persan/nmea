@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.OLN.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  OLN_Message
@@ -59,7 +59,7 @@ package body NMEA.Messages.OLN.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : OLN_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -75,11 +75,11 @@ package body NMEA.Messages.OLN.JSON is
          To.Omega_Pair_16 := Get (Value);
       elsif Name = "Omega_Pair_17" then
          To.Omega_Pair_17 := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

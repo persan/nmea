@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.GBS.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  GBS_Message
@@ -64,7 +64,7 @@ package body NMEA.Messages.GBS.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : GBS_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -90,11 +90,11 @@ package body NMEA.Messages.GBS.JSON is
          To.Estimate_Of_Bias := Get (Value);
       elsif Name = "Standard_Deviation_Of_Bias_Estimate" then
          To.Standard_Deviation_Of_Bias_Estimate := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

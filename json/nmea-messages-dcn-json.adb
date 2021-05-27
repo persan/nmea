@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.DCN.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  DCN_Message
@@ -72,7 +72,7 @@ package body NMEA.Messages.DCN.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : DCN_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -114,11 +114,11 @@ package body NMEA.Messages.DCN.JSON is
          To.N_Nautical_Miles := Get (Value);
       elsif Name = "Fix_Data_Basis" then
          To.Fix_Data_Basis := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

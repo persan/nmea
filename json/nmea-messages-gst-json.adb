@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.GST.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  GST_Message
@@ -64,7 +64,7 @@ package body NMEA.Messages.GST.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : GST_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -90,11 +90,11 @@ package body NMEA.Messages.GST.JSON is
          To.Standard_Deviation_Of_Longitude_Error := Get (Value);
       elsif Name = "Standard_Deviation_Of_Altitude_Error" then
          To.Standard_Deviation_Of_Altitude_Error := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

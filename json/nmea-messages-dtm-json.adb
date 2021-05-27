@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.DTM.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  DTM_Message
@@ -64,7 +64,7 @@ package body NMEA.Messages.DTM.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : DTM_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -90,11 +90,11 @@ package body NMEA.Messages.DTM.JSON is
          To.Altitude_Offset := Get (Value);
       elsif Name = "Datum_Name" then
          To.Datum_Name := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

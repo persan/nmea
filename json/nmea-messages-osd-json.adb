@@ -4,7 +4,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 package body NMEA.Messages.OSD.JSON is
    use NMEA.Messages.JSON;
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  OSD_Message
@@ -65,7 +65,7 @@ package body NMEA.Messages.OSD.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : OSD_Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -93,11 +93,11 @@ package body NMEA.Messages.OSD.JSON is
          To.Vessel_drift_speed := Get (Value);
       elsif Name = "Speed_Units" then
          To.Speed_Units := Get (Value);
-      else  
-         null;
+      else
+         Map_Field (Name, Value, Message (To));
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------

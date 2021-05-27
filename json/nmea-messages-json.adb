@@ -2,7 +2,7 @@ with NMEA.JSON; pragma Warnings (Off, NMEA.JSON);
 
 package body NMEA.Messages.JSON is
    use NMEA.JSON;
-   
+
 
    ----------------------------------------------------
    --  Message
@@ -55,7 +55,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Message)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -67,11 +67,11 @@ package body NMEA.Messages.JSON is
    begin
       if Name = "Talker" then
          To.Talker := Get (Value);
-      else  
+      else
          null;
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -139,7 +139,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : NMEA_Field)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -151,11 +151,11 @@ package body NMEA.Messages.JSON is
    begin
       if Name = "Is_Valid" then
          To.Is_Valid := Get (Value);
-      else  
+      else
          null;
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -223,7 +223,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : UTC_Time_Type)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -235,11 +235,11 @@ package body NMEA.Messages.JSON is
    begin
       if Name = "Data" then
          To.Data := Get (Value);
-      else  
+      else
          null;
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -307,7 +307,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : NMEA_Long_Float)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -319,11 +319,11 @@ package body NMEA.Messages.JSON is
    begin
       if Name = "Data" then
          To.Data := Get (Value);
-      else  
+      else
          null;
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -345,6 +345,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Nmea_Hight; Target : in out JSON_Value) is
    begin
+      Populate (NMEA_Long_Float (Val), Target);
    end;
 
    ------------
@@ -390,7 +391,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Nmea_Hight)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -400,11 +401,10 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Nmea_Hight) is
    begin
-      e  
-         null;
-      end if;
+      null;
+
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -472,7 +472,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : NMEA_Integer)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -484,11 +484,11 @@ package body NMEA.Messages.JSON is
    begin
       if Name = "Data" then
          To.Data := Get (Value);
-      else  
+      else
          null;
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -556,7 +556,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : NMEA_String)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -568,11 +568,11 @@ package body NMEA.Messages.JSON is
    begin
       if Name = "Value" then
          To.Value := Get (Value);
-      else  
+      else
          null;
       end if;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -594,6 +594,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Latitude_Type; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -639,7 +640,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Latitude_Type)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -649,11 +650,9 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Latitude_Type) is
    begin
-      e  
-         null;
-      end if;
+      null;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -675,6 +674,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Longitude_Type; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -720,7 +720,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Longitude_Type)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -730,11 +730,9 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Longitude_Type) is
    begin
-      e  
-         null;
-      end if;
+      null;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -756,6 +754,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Fix_Quality_Type; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -801,7 +800,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Fix_Quality_Type)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -811,11 +810,9 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Fix_Quality_Type) is
    begin
-      e  
-         null;
-      end if;
+      null;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -837,6 +834,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Count; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -882,7 +880,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Count)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -892,11 +890,9 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Count) is
    begin
-      e  
-         null;
-      end if;
+      null;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -918,6 +914,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Waypoint_ID; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -963,7 +960,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Waypoint_ID)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -973,11 +970,9 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Waypoint_ID) is
    begin
-      e  
-         null;
-      end if;
+      null;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -999,6 +994,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Dilution; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -1044,7 +1040,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Dilution)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -1054,11 +1050,9 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Dilution) is
    begin
-      e  
-         null;
-      end if;
+      null;
    end;
-   
+
    ---------
    -- Map --
    ---------
@@ -1080,6 +1074,7 @@ package body NMEA.Messages.JSON is
    ----------------------------------------------------
    procedure Populate (Val : Meters; Target : in out JSON_Value) is
    begin
+      null;
    end;
 
    ------------
@@ -1125,7 +1120,7 @@ package body NMEA.Messages.JSON is
      (Val        : JSON_Value;
       Field_Name : UTF8_String;
       Field      : Meters)
-   is      
+   is
    begin
       Set_Field (Val, Field_Name, Create (Field));
    end Set_Field;
@@ -1135,1747 +1130,1747 @@ package body NMEA.Messages.JSON is
    ---------------
    procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Meters) is
    begin
-      e  
-         null;
-      end if;
+      E
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Meters)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
+   begin
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Meters)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Seconds
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Seconds; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Data", Create (Val.Data));
-   end;
+----------------------------------------------------
+--  NMEA_Seconds
+----------------------------------------------------
+procedure Populate (Val : NMEA_Seconds; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Data", Create (Val.Data));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Seconds) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Seconds) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Seconds is
-   begin
-      return Ret : NMEA_Seconds do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Seconds is
+begin
+   return Ret : NMEA_Seconds do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Seconds
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Seconds)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Seconds)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Seconds) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Seconds) is
+begin
+   if Name = "Data" then
+      To.Data := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Seconds)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Data" then
-         To.Data := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Seconds)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  DGPS_Station_ID
-   ----------------------------------------------------
-   procedure Populate (Val : DGPS_Station_ID; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  DGPS_Station_ID
+----------------------------------------------------
+procedure Populate (Val : DGPS_Station_ID; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : DGPS_Station_ID) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : DGPS_Station_ID) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return DGPS_Station_ID is
-   begin
-      return Ret : DGPS_Station_ID do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return DGPS_Station_ID is
+begin
+   return Ret : DGPS_Station_ID do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return DGPS_Station_ID
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : DGPS_Station_ID)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : DGPS_Station_ID)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out DGPS_Station_ID) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out DGPS_Station_ID) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out DGPS_Station_ID)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out DGPS_Station_ID)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Status_Type
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Status_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  NMEA_Status_Type
+----------------------------------------------------
+procedure Populate (Val : NMEA_Status_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Status_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Status_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Status_Type is
-   begin
-      return Ret : NMEA_Status_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Status_Type is
+begin
+   return Ret : NMEA_Status_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Status_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Status_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Status_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Status_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Status_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Status_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Status_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Status
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Status; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Data", Create (Val.Data));
-   end;
+----------------------------------------------------
+--  NMEA_Status
+----------------------------------------------------
+procedure Populate (Val : NMEA_Status; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Data", Create (Val.Data));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Status) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Status) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Status is
-   begin
-      return Ret : NMEA_Status do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Status is
+begin
+   return Ret : NMEA_Status do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Status
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Status)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Status)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Status) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Status) is
+begin
+   if Name = "Data" then
+      To.Data := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Status)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Data" then
-         To.Data := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Status)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Left_Right_Type
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Left_Right_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  NMEA_Left_Right_Type
+----------------------------------------------------
+procedure Populate (Val : NMEA_Left_Right_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Left_Right_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Left_Right_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Left_Right_Type is
-   begin
-      return Ret : NMEA_Left_Right_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Left_Right_Type is
+begin
+   return Ret : NMEA_Left_Right_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Left_Right_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Left_Right_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Left_Right_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Left_Right_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Left_Right_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Left_Right_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Left_Right_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Left_Right
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Left_Right; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Data", Create (Val.Data));
-   end;
+----------------------------------------------------
+--  NMEA_Left_Right
+----------------------------------------------------
+procedure Populate (Val : NMEA_Left_Right; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Data", Create (Val.Data));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Left_Right) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Left_Right) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Left_Right is
-   begin
-      return Ret : NMEA_Left_Right do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Left_Right is
+begin
+   return Ret : NMEA_Left_Right do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Left_Right
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Left_Right)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Left_Right)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Left_Right) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Left_Right) is
+begin
+   if Name = "Data" then
+      To.Data := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Left_Right)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Data" then
-         To.Data := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Left_Right)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  UTC_Date_Type
-   ----------------------------------------------------
-   procedure Populate (Val : UTC_Date_Type; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Data", Create (Val.Data));
-   end;
+----------------------------------------------------
+--  UTC_Date_Type
+----------------------------------------------------
+procedure Populate (Val : UTC_Date_Type; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Data", Create (Val.Data));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : UTC_Date_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : UTC_Date_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return UTC_Date_Type is
-   begin
-      return Ret : UTC_Date_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return UTC_Date_Type is
+begin
+   return Ret : UTC_Date_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return UTC_Date_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : UTC_Date_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : UTC_Date_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out UTC_Date_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out UTC_Date_Type) is
+begin
+   if Name = "Data" then
+      To.Data := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out UTC_Date_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Data" then
-         To.Data := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out UTC_Date_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  Nautical_Mile_Type
-   ----------------------------------------------------
-   procedure Populate (Val : Nautical_Mile_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  Nautical_Mile_Type
+----------------------------------------------------
+procedure Populate (Val : Nautical_Mile_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : Nautical_Mile_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : Nautical_Mile_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return Nautical_Mile_Type is
-   begin
-      return Ret : Nautical_Mile_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return Nautical_Mile_Type is
+begin
+   return Ret : Nautical_Mile_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return Nautical_Mile_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : Nautical_Mile_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : Nautical_Mile_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Nautical_Mile_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Nautical_Mile_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Nautical_Mile_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Nautical_Mile_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  Knots_Type
-   ----------------------------------------------------
-   procedure Populate (Val : Knots_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  Knots_Type
+----------------------------------------------------
+procedure Populate (Val : Knots_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : Knots_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : Knots_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return Knots_Type is
-   begin
-      return Ret : Knots_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return Knots_Type is
+begin
+   return Ret : Knots_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return Knots_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : Knots_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : Knots_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Knots_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Knots_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Knots_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Knots_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  KmH_Type
-   ----------------------------------------------------
-   procedure Populate (Val : KmH_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  KmH_Type
+----------------------------------------------------
+procedure Populate (Val : KmH_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : KmH_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : KmH_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return KmH_Type is
-   begin
-      return Ret : KmH_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return KmH_Type is
+begin
+   return Ret : KmH_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return KmH_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : KmH_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : KmH_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out KmH_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out KmH_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out KmH_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out KmH_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  Heading_Type
-   ----------------------------------------------------
-   procedure Populate (Val : Heading_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  Heading_Type
+----------------------------------------------------
+procedure Populate (Val : Heading_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : Heading_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : Heading_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return Heading_Type is
-   begin
-      return Ret : Heading_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return Heading_Type is
+begin
+   return Ret : Heading_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return Heading_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : Heading_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : Heading_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Heading_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Heading_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Heading_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Heading_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  Magnetic_Variation_Type
-   ----------------------------------------------------
-   procedure Populate (Val : Magnetic_Variation_Type; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  Magnetic_Variation_Type
+----------------------------------------------------
+procedure Populate (Val : Magnetic_Variation_Type; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : Magnetic_Variation_Type) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : Magnetic_Variation_Type) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return Magnetic_Variation_Type is
-   begin
-      return Ret : Magnetic_Variation_Type do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return Magnetic_Variation_Type is
+begin
+   return Ret : Magnetic_Variation_Type do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return Magnetic_Variation_Type
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : Magnetic_Variation_Type)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : Magnetic_Variation_Type)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Magnetic_Variation_Type) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Magnetic_Variation_Type) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Magnetic_Variation_Type)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Magnetic_Variation_Type)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Constant_Character
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Constant_Character; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  NMEA_Constant_Character
+----------------------------------------------------
+procedure Populate (Val : NMEA_Constant_Character; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Constant_Character) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Constant_Character) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Constant_Character is
-   begin
-      return Ret : NMEA_Constant_Character do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Constant_Character is
+begin
+   return Ret : NMEA_Constant_Character do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Constant_Character
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Constant_Character)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Constant_Character)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Constant_Character) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Constant_Character) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Constant_Character)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Constant_Character)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Boolean
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Boolean; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Value", Create (Val.Value));
-   end;
+----------------------------------------------------
+--  NMEA_Boolean
+----------------------------------------------------
+procedure Populate (Val : NMEA_Boolean; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Value", Create (Val.Value));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Boolean) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Boolean) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Boolean is
-   begin
-      return Ret : NMEA_Boolean do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Boolean is
+begin
+   return Ret : NMEA_Boolean do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Boolean
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Boolean)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Boolean)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Boolean) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Boolean) is
+begin
+   if Name = "Value" then
+      To.Value := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Boolean)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Value" then
-         To.Value := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Boolean)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Hex_Value
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Hex_Value; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Value", Create (Val.Value));
-   end;
+----------------------------------------------------
+--  NMEA_Hex_Value
+----------------------------------------------------
+procedure Populate (Val : NMEA_Hex_Value; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Value", Create (Val.Value));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Hex_Value) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Hex_Value) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Hex_Value is
-   begin
-      return Ret : NMEA_Hex_Value do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Hex_Value is
+begin
+   return Ret : NMEA_Hex_Value do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Hex_Value
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Hex_Value)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Hex_Value)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Hex_Value) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Hex_Value) is
+begin
+   if Name = "Value" then
+      To.Value := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Hex_Value)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Value" then
-         To.Value := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Hex_Value)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Waypoint_ID
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Waypoint_ID; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  NMEA_Waypoint_ID
+----------------------------------------------------
+procedure Populate (Val : NMEA_Waypoint_ID; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Waypoint_ID) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Waypoint_ID) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Waypoint_ID is
-   begin
-      return Ret : NMEA_Waypoint_ID do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Waypoint_ID is
+begin
+   return Ret : NMEA_Waypoint_ID do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Waypoint_ID
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Waypoint_ID)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Waypoint_ID)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Waypoint_ID) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Waypoint_ID) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Waypoint_ID)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Waypoint_ID)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Dummy_Field
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Dummy_Field; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  NMEA_Dummy_Field
+----------------------------------------------------
+procedure Populate (Val : NMEA_Dummy_Field; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Dummy_Field) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Dummy_Field) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Dummy_Field is
-   begin
-      return Ret : NMEA_Dummy_Field do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Dummy_Field is
+begin
+   return Ret : NMEA_Dummy_Field do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Dummy_Field
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Dummy_Field)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Dummy_Field)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Dummy_Field) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Dummy_Field) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Dummy_Field)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Dummy_Field)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Waypoint_ID_Access
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Waypoint_ID_Access; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  NMEA_Waypoint_ID_Access
+----------------------------------------------------
+procedure Populate (Val : NMEA_Waypoint_ID_Access; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Waypoint_ID_Access) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Waypoint_ID_Access) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Waypoint_ID_Access is
-   begin
-      return Ret : NMEA_Waypoint_ID_Access do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Waypoint_ID_Access is
+begin
+   return Ret : NMEA_Waypoint_ID_Access do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Waypoint_ID_Access
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Waypoint_ID_Access)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Waypoint_ID_Access)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Waypoint_ID_Access) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Waypoint_ID_Access) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Waypoint_ID_Access)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Waypoint_ID_Access)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  Waypoint_Array
-   ----------------------------------------------------
-   procedure Populate (Val : Waypoint_Array; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  Waypoint_Array
+----------------------------------------------------
+procedure Populate (Val : Waypoint_Array; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : Waypoint_Array) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : Waypoint_Array) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return Waypoint_Array is
-   begin
-      return Ret : Waypoint_Array do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return Waypoint_Array is
+begin
+   return Ret : Waypoint_Array do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return Waypoint_Array
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : Waypoint_Array)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : Waypoint_Array)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Waypoint_Array) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Waypoint_Array) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Waypoint_Array)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Waypoint_Array)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  Waypoint_Array_Access
-   ----------------------------------------------------
-   procedure Populate (Val : Waypoint_Array_Access; Target : in out JSON_Value) is
-   begin
-   end;
+----------------------------------------------------
+--  Waypoint_Array_Access
+----------------------------------------------------
+procedure Populate (Val : Waypoint_Array_Access; Target : in out JSON_Value) is
+begin
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : Waypoint_Array_Access) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : Waypoint_Array_Access) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return Waypoint_Array_Access is
-   begin
-      return Ret : Waypoint_Array_Access do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return Waypoint_Array_Access is
+begin
+   return Ret : Waypoint_Array_Access do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return Waypoint_Array_Access
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : Waypoint_Array_Access)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : Waypoint_Array_Access)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Waypoint_Array_Access) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out Waypoint_Array_Access) is
+begin
+   E
+   null;
+end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out Waypoint_Array_Access)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      e  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out Waypoint_Array_Access)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
-   ----------------------------------------------------
-   --  NMEA_Waypoints
-   ----------------------------------------------------
-   procedure Populate (Val : NMEA_Waypoints; Target : in out JSON_Value) is
-   begin
-      Set_Field (Target, "Value", Create (Val.Value));
-   end;
+----------------------------------------------------
+--  NMEA_Waypoints
+----------------------------------------------------
+procedure Populate (Val : NMEA_Waypoints; Target : in out JSON_Value) is
+begin
+   Set_Field (Target, "Value", Create (Val.Value));
+end;
 
-   ------------
-   -- Create --
-   ------------
+------------
+-- Create --
+------------
 
-   function Create (Val : NMEA_Waypoints) return JSON_Value is
-   begin
-      return Ret : JSON_Value := Create_Object do
-         Populate (Val, Ret);
-      end return;
-   end Create;
+function Create (Val : NMEA_Waypoints) return JSON_Value is
+begin
+   return Ret : JSON_Value := Create_Object do
+      Populate (Val, Ret);
+   end return;
+end Create;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Waypoints is
-   begin
-      return Ret : NMEA_Waypoints do
-         Map (Val, Ret);
-      end return;
-   end Get;
+function Get (Val : GNATCOLL.JSON.JSON_Value) return NMEA_Waypoints is
+begin
+   return Ret : NMEA_Waypoints do
+      Map (Val, Ret);
+   end return;
+end Get;
 
-   ---------
-   -- Get --
-   ---------
+---------
+-- Get --
+---------
 
-   function Get
-     (Val   : JSON_Value;
-      Field : UTF8_String)
+function Get
+  (Val   : JSON_Value;
+   Field : UTF8_String)
       return NMEA_Waypoints
-   is
-   begin
-      return Get (JSON_Value'(Get (Val, Field)));
-   end Get;
+is
+begin
+   return Get (JSON_Value'(Get (Val, Field)));
+end Get;
 
-   ---------------
-   -- Set_Field --
-   ---------------
+---------------
+-- Set_Field --
+---------------
 
-   procedure Set_Field
-     (Val        : JSON_Value;
-      Field_Name : UTF8_String;
-      Field      : NMEA_Waypoints)
-   is      
-   begin
-      Set_Field (Val, Field_Name, Create (Field));
-   end Set_Field;
+procedure Set_Field
+  (Val        : JSON_Value;
+   Field_Name : UTF8_String;
+   Field      : NMEA_Waypoints)
+is
+begin
+   Set_Field (Val, Field_Name, Create (Field));
+end Set_Field;
 
-   ---------------
-   -- Map_Field --
-   ---------------
-   procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Waypoints) is
+---------------
+-- Map_Field --
+---------------
+procedure Map_Field (Name : UTF8_String; Value : JSON_Value; To : in out NMEA_Waypoints) is
+begin
+   if Name = "Value" then
+      To.Value := Get (Value);
+   else
+      null;
+   end if;
+end;
+
+---------
+-- Map --
+---------
+procedure Map
+  (Val : JSON_Value;
+   To  : in out NMEA_Waypoints)
+is
+   procedure Process (Name : UTF8_String; Value : JSON_Value);
+   procedure Process (Name : UTF8_String; Value : JSON_Value) is
    begin
-      if Name = "Value" then
-         To.Value := Get (Value);
-      else  
-         null;
-      end if;
+      Map_Field (Name, Value, To);
    end;
-   
-   ---------
-   -- Map --
-   ---------
-   procedure Map
-     (Val : JSON_Value;
-      To  : in out NMEA_Waypoints)
-   is
-      procedure Process (Name : UTF8_String; Value : JSON_Value);
-      procedure Process (Name : UTF8_String; Value : JSON_Value) is
-      begin
-         Map_Field (Name, Value, To);
-      end;
-   begin
-      Map_JSON_Object (Val, Process'Access);
-   end Map;
+begin
+   Map_JSON_Object (Val, Process'Access);
+end Map;
 
 end NMEA.Messages.JSON;

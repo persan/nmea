@@ -1,4 +1,11 @@
 --  RMM - Dummy
+--  Map datum
+--
+--  eg1. $PGRMM,Astrln Geod '66*51
+--  eg2. $PGRMM,NAD27 Canada*2F
+--
+--
+--         Currently active horizontal datum
 
 package NMEA.Messages.RMM is
    type RMM_Message is new Message with record
