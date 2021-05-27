@@ -11,3 +11,4 @@ xml/*
 **/*BASE*
 **/*LOCAL*
 **/*REMOTE*
+.clang-format

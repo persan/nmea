@@ -52,8 +52,9 @@ package body NMEA.Messages is
       TalkerId : NMEA.TalkerIDs.TalkerId;
       Name     : String (1 .. 3);
       Dummy    : Character;
+      Leading_Header : Character;
    begin
-      Character'Read (Stream, Dummy); -- skip leading $
+      Character'Read (Stream, Leading_Header); -- skip leading $
       String'Read (Stream, String (TalkerId));
       String'Read (Stream, Name);
 
@@ -63,6 +64,7 @@ package body NMEA.Messages is
       Character'Read (Stream, Dummy); -- skip first ,
       return Result :  Message'Class := Construct_Message (Tag_Map.Element (Name), Stream) do
          Result.Talker := TalkerId;
+         Result.Leading_Header := Leading_Header_Type (Leading_Header);
       end return;
    end Input_Message;
 
@@ -74,8 +76,9 @@ package body NMEA.Messages is
      (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
       Item   : Message'Class)
    is
+
    begin
-      Character'Write (Stream, '$');
+      Character'Write (Stream, Character(Item.Leading_Header));
       String'Write (Stream, String (Item.Talker));
       String'Write (Stream, Name_Map.Element (Item'Tag));
       Message'Write (Stream, Item);

@@ -5,8 +5,16 @@ with NMEA.TalkerIDs;
 with Ada.Finalization;
 with GNAT.Strings;
 package NMEA.Messages is
-   --  This package provides a root for NMEA messages
+--  This package provides a root for NMEA messages
+   type Leading_Header_Type is new Character with Read => Read, Write => Write;
+   procedure Read (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                   Data   : out Leading_Header_Type) is null;
+
+   procedure Write (Stream : not null access Ada.Streams.Root_Stream_Type'Class;
+                    Data   : in Leading_Header_Type) is null;
+
    type Message is abstract tagged record
+      Leading_Header : Leading_Header_Type;
       Talker : NMEA.TalkerIDs.TalkerId;
    end record;
 
